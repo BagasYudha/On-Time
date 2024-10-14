@@ -18,6 +18,7 @@ class SplashScreen : AppCompatActivity() {
         val test: Int = 0
         val testUmi: Int = 0
         val testNiken: Int = 0
+        val testWarda: Int = 0
 
         val splashEnd: Long = 1200
 
