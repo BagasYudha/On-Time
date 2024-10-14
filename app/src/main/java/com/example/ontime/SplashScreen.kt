@@ -16,7 +16,7 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         val test: Int = 0
-
+        val testUmi: Int = 0
 
         val splashEnd: Long = 1200
 
