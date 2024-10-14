@@ -15,7 +15,11 @@ class SplashScreen : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_splash_screen)
 
+        val test: Int = 0
+
+
         val splashEnd: Long = 1200
+
 
         Handler().postDelayed({
             startActivity(Intent(this, MainActivity::class.java))
