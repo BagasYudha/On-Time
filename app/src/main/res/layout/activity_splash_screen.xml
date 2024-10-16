@@ -29,7 +29,7 @@
         android:gravity="center"
         android:fontFamily="@font/poppins_regular"
         android:textSize="10sp"
-        android:text="Aplikasi ini dibuat oleh Bagas Yudha, Niken Prasetyo,\n Umi Latifah, dan Warda Imana."
+        android:text="Aplikasi ini dibuat oleh Bagas Yudha, Niken Setyonigrum,\n Umi Latifah, dan Warda Imana."
         android:layout_marginBottom="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
