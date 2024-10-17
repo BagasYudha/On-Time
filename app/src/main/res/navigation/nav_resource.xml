@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_resource"
+    app:startDestination="@id/dosenFragment">
+
+    <fragment
+        android:id="@+id/tugasFragment"
+        android:name="com.example.ontime.fragment.TugasFragment"
+        android:label="tugas"
+        tools:layout="@layout/fragment_tugas" />
+    <fragment
+        android:id="@+id/dosenFragment"
+        android:name="com.example.ontime.fragment.DosenFragment"
+        android:label="dosen"
+        tools:layout="@layout/fragment_dosen" />
+    <fragment
+        android:id="@+id/selesaiFragment"
+        android:name="com.example.ontime.fragment.SelesaiFragment"
+        android:label="selesai"
+        tools:layout="@layout/fragment_selesai" />
+</navigation>

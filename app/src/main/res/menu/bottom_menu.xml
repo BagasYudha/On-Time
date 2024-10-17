@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/tugasFragment"
+        android:title="Tugas"
+        android:icon="@drawable/list_check_solid" />
+    <item
+        android:id="@+id/dosenFragment"
+        android:title="Dosen"
+        android:icon="@drawable/user_regular"/>
+    <item
+        android:id="@+id/selesaiFragment"
+        android:title="Selesai"
+        android:icon="@drawable/circle_check_regular"/>
+</menu>
