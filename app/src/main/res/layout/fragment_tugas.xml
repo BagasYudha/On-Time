@@ -110,15 +110,6 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        android:background="@color/white"
-        app:itemTextAppearanceActive="@style/BottomNavigationViewStyle"
-        app:itemIconTint="@color/nav_icon_color"
-        app:itemTextColor="@color/nav_text_color"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
