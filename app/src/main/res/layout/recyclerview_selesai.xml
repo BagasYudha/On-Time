@@ -41,7 +41,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Buat Aplikasi Android"
+                        android:text="Nama Tugas"
                         android:textSize="16sp"
                         android:textColor="#000000"
                         android:textStyle="bold"/>
@@ -50,15 +50,12 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Pemrograman Mobile 2"
+                        android:text="Matakuliah"
                         android:textSize="14sp"
                         android:textColor="#888888"
                         android:layout_marginTop="4dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- Repeat more CardViews for each item -->
-            <!-- You can use a RecyclerView to handle dynamic data -->
 
         </LinearLayout>
     </ScrollView>
