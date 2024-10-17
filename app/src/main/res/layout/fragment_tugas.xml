@@ -1,14 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragment.TugasFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/DaftarTugas1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Daftar Tugas"
+        android:textColor="@color/black"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/TambahTugas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="35dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Tambah Tugas Baru"
+        android:textColor="@color/body"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/DaftarTugas1" />
+
+    <EditText
+        android:id="@+id/InputTambahTugas"
+        android:layout_width="247dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edittext_background"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="+ Tambahkan Tugas"
+        android:padding="12dp"
+        android:textColor="@color/placeholder"
+        android:textSize="12dp"
+        app:layout_constraintStart_toStartOf="@+id/TambahTugas"
+        app:layout_constraintTop_toBottomOf="@+id/TambahTugas" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/dropdown_input_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        android:hint="Pilih item"
+        app:endIconMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/InputTambahTugas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/InputTambahTugas">
+
+        <AutoCompleteTextView
+            android:id="@+id/dropdown_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:focusable="false"
+            android:fontFamily="@font/poppins_regular"
+            android:inputType="none"
+            android:padding="10dp"
+            android:textSize="12dp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <Spinner-->
+<!--        android:id="@+id/Spinner"-->
+<!--        -->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:background="@drawable/edittext_background"-->
+<!--        android:padding="10dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/InputTambahTugas"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/InputTambahTugas"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/InputTambahTugas"-->
+<!--        android:layout_marginEnd="16dp"/>-->
+
+    <TextView
+        android:id="@+id/DaftarTugas2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Daftar Tugas"
+        android:layout_marginTop="45dp"
+        android:textColor="@color/body"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="@+id/InputTambahTugas"
+        app:layout_constraintTop_toBottomOf="@+id/InputTambahTugas" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RVDaftarTugas"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomNavigation"
+        app:layout_constraintStart_toStartOf="@+id/DaftarTugas2"
+        app:layout_constraintTop_toBottomOf="@id/DaftarTugas2"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="@color/white"
+        app:itemTextAppearanceActive="@style/BottomNavigationViewStyle"
+        app:itemIconTint="@color/nav_icon_color"
+        app:itemTextColor="@color/nav_text_color"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
