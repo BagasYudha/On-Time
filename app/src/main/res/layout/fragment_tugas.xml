@@ -12,7 +12,7 @@
         android:id="@+id/DaftarTugas1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Daftar Tugas"
         android:textColor="@color/black"
@@ -36,7 +36,7 @@
 
     <EditText
         android:id="@+id/InputTambahTugas"
-        android:layout_width="247dp"
+        android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/edittext_background"
@@ -45,30 +45,49 @@
         android:padding="10dp"
         android:textColor="@color/placeholder"
         android:textSize="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/mySpinner"
         app:layout_constraintStart_toStartOf="@+id/TambahTugas"
-        app:layout_constraintTop_toBottomOf="@+id/TambahTugas" />
+        app:layout_constraintTop_toBottomOf="@+id/TambahTugas"
+        app:layout_constraintWidth_percent="0.5" />
 
     <Spinner
         android:id="@+id/mySpinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
         android:background="@drawable/edittext_background"
-        android:drawableEnd="@android:drawable/arrow_down_float"
         android:orientation="horizontal"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/InputTambahTugas"
-        app:layout_constraintEnd_toEndOf="@+id/RVDaftarTugas"
         app:layout_constraintStart_toEndOf="@+id/InputTambahTugas"
-        app:layout_constraintTop_toTopOf="@+id/InputTambahTugas" />
+        app:layout_constraintTop_toTopOf="@+id/InputTambahTugas"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/round_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:iconGravity="textTop"
+        app:icon="@drawable/ic_arrow_upward"
+        android:backgroundTint="@color/maincolor"
+        app:cornerRadius="50dp"
+        android:padding="8dp"
+        app:iconSize="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mySpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/mySpinner"
+        app:layout_constraintTop_toTopOf="@+id/mySpinner"/>
 
     <TextView
         android:id="@+id/DaftarTugas2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Daftar Tugas"
-        android:layout_marginTop="45dp"
         android:textColor="@color/body"
         android:textSize="14dp"
         app:layout_constraintStart_toStartOf="@+id/InputTambahTugas"
@@ -84,5 +103,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/DaftarTugas2"
         app:layout_constraintTop_toBottomOf="@id/DaftarTugas2" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
