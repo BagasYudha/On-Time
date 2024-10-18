@@ -6,4 +6,5 @@
     <color name="placeholder">#A0A3BD</color>
     <color name="outline">#D9DBE9</color>
     <color name="maincolor">#0FB0EF</color>
+    <color name="red">#FF00</color>
 </resources>
