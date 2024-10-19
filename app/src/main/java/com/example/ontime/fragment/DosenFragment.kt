@@ -5,40 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.ontime.R
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ontime.adapter.DosenAdapter
+import com.example.ontime.databinding.FragmentDosenBinding
+import com.example.ontime.setup.AppViewModel
+import com.example.ontime.setup.Dosen
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class DosenFragment : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentDosenBinding
+    private lateinit var appViewModel: AppViewModel
+    private lateinit var dosenAdapter: DosenAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_dosen, container, false)
+        binding = FragmentDosenBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            DosenFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
+        dosenAdapter = DosenAdapter(listOf())
+
+        binding.rvDaftarDosen.adapter = dosenAdapter
+        binding.rvDaftarDosen.layoutManager = LinearLayoutManager(requireContext())
+
+        // Observasi data dari ViewModel
+        appViewModel.allDosen.observe(viewLifecycleOwner){ dosen ->
+            dosenAdapter.updateDosen(dosen)
+        }
+
+        // Tambahkan tugas baru
+        binding.roundButton.setOnClickListener {
+            val namaDosen = binding.TambahDataDosen.text.toString()
+            val emailDosen = binding.EmailDosen.text.toString()
+//            val mataKuliah = binding.MataKuliah.text.toString()
+
+            if (namaDosen.isNotEmpty() && emailDosen.isNotEmpty()) {
+                val dosen = Dosen(nama = namaDosen, email = emailDosen)
+                appViewModel.insertDosen(dosen) // Memanggil method untuk menyimpan dosen
+            } else {
+                Toast.makeText(requireContext(), "Mohon lengkapi semua data", Toast.LENGTH_SHORT).show()
             }
+        }
+
     }
+
 }

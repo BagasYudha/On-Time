@@ -71,7 +71,7 @@ dependencies {
     implementation("androidx.activity:activity-ktx:1.7.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
 
-    // Room Database
+//     Room Database
     ksp("androidx.room:room-compiler:2.6.1")
 
     val room_version = "2.6.1"
@@ -80,7 +80,11 @@ dependencies {
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     testImplementation("androidx.room:room-testing:$room_version")
-
+//
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
+
+    implementation ("androidx.room:room-runtime:$room_version")
+    implementation ("androidx.room:room-ktx:$room_version")
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1" )
 }
