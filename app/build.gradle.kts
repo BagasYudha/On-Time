@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.navigation.fragment)
     // Android Test
     androidTestImplementation("androidx.test:runner:1.6.2")
     androidTestUtil("androidx.test:orchestrator:1.5.0")
