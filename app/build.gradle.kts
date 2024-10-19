@@ -47,6 +47,9 @@ dependencies {
     androidTestImplementation("androidx.test:runner:1.6.2")
     androidTestUtil("androidx.test:orchestrator:1.5.0")
 
+    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
+
     // AndroidX Libraries
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

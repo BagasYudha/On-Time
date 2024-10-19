@@ -2,25 +2,16 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-<<<<<<< HEAD
       <SelectionState runConfigName="OneTime">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-10-18T11:19:27.760605800Z">
+        <DropdownSelection timestamp="2024-10-18T11:31:17.903593800Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\user\.android\avd\Pixel_5_API_34.avd" />
+              <DeviceId pluginId="PhysicalDevice" identifier="serial=FANV6SEYVWMRBUQS" />
             </handle>
           </Target>
         </DropdownSelection>
         <DialogSelection />
-=======
-<<<<<<< HEAD
-      <SelectionState runConfigName="app">
-=======
-      <SelectionState runConfigName="SplashScreen">
->>>>>>> c94f49b6325f0676cf24928ed6cb5a826f854972
-        <option name="selectionMode" value="DROPDOWN" />
->>>>>>> 6108b2d97335d509f5f65fe7333310617037ff97
       </SelectionState>
     </selectionStates>
   </component>
