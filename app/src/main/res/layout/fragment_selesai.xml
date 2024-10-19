@@ -42,6 +42,7 @@
         android:id="@+id/rvDaftarSelesai"
         tools:listitem="@layout/item_selesai"
         android:layout_width="match_parent"
+        android:scrollbars="vertical"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/subtitleSelesai"
