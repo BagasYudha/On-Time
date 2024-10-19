@@ -37,7 +37,7 @@
     <EditText
         android:id="@+id/InputTambahTugas"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@drawable/edittext_background"
         android:fontFamily="@font/poppins_regular"
@@ -94,7 +94,8 @@
         app:layout_constraintTop_toBottomOf="@+id/InputTambahTugas" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RVDaftarTugas"
+        android:id="@+id/RvDaftarTugas"
+        tools:listitem="@layout/item_tugas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
