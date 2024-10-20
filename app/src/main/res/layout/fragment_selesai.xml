@@ -15,28 +15,36 @@
         android:fontFamily="@font/poppins_semibold"
         android:textSize="24sp"
         android:textColor="#000000"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="35dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/poppins_semibold"/>
 
     <TextView
         android:id="@+id/subtitleSelesai"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tugas Selesai"
+<<<<<<< HEAD
+        android:textColor="#000000"
+        android:layout_marginTop="18dp"
+        android:textSize="18sp"
+=======
         android:textColor="@color/body"
         android:fontFamily="@font/poppins_semibold"
         android:textSize="14dp"
+>>>>>>> aa10976c35ece40502b17516b378fdc96a816eb7
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.053"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.09" />
+        app:layout_constraintVertical_bias="0.09"
+        android:fontFamily="@font/poppins_semibold"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDaftarSelesai"
