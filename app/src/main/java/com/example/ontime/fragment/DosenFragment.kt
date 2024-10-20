@@ -37,9 +37,6 @@ class DosenFragment : Fragment() {
         // Inisialisasi ViewModel
         appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
 
-
-
-
         // Untuk Dosen
         dosenAdapter = DosenAdapter(listOf()) { dosen ->
             appViewModel.deleteDosen(dosen)
@@ -68,8 +65,33 @@ class DosenFragment : Fragment() {
             }
         }
 
+        // Untuk Matkul
+        matkulAdapter = MatkulAdapter(listOf()) { matkul ->
+            appViewModel.deleteMatkul(matkul)
+            Toast.makeText(requireContext(), "Mata Kuliah ${matkul.matkul} berhasil dihapus", Toast.LENGTH_SHORT).show()
+        }
 
+        binding.rvMatkul.adapter = matkulAdapter
+        binding.rvMatkul.layoutManager = LinearLayoutManager(requireContext())
 
+        // Observasi data dari ViewModel
+        appViewModel.allMatkul.observe(viewLifecycleOwner) { matkulList ->
+            matkulAdapter.updateMataKuliah(matkulList)
+        }
+
+        // Tambahkan matkul baru
+        binding.roundButtonMatkul.setOnClickListener {
+            val matkul = binding.etNamaMatkul.text.toString()
+            val sks = binding.etSks.text.toString()
+
+            if (matkul.isNotEmpty() && sks.isNotEmpty()) {
+                val matkulObj = MataKuliah(matkul = matkul, sks = sks.toInt()) // Pastikan menggunakan kelas yang benar
+                appViewModel.insertMatkul(matkulObj)
+                Toast.makeText(requireContext(), "Mata Kuliah $matkul berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(requireContext(), "Mohon lengkapi semua data", Toast.LENGTH_SHORT).show()
+            }
+        }
 
     }
 }
