@@ -15,7 +15,12 @@ class TugasAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(tugas: Tugas) {
-            binding.tvNamaTugas.text = tugas.judul // Sesuaikan dengan nama properti di model Tugas Anda
+            binding.tvNamaTugas.text = tugas.judul
+            binding.tvMataKuliah.text= tugas.matkul
+
+            binding.itemTugas.setOnClickListener{
+                onDeleteClick(tugas)
+            }
         }
     }
 
@@ -31,7 +36,7 @@ class TugasAdapter(
     }
 
     fun updateTugas(newTugas: List<Tugas>) {
-        tugas = newTugas.sortedByDescending { it.id } // Mengurutkan berdasarkan ID secara menurun
-        notifyDataSetChanged() // Memberitahu adapter bahwa data telah berubah
+        tugas = newTugas.sortedByDescending { it.id }
+        notifyDataSetChanged()
     }
 }
