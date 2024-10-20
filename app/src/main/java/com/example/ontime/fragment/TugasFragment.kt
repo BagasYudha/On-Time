@@ -8,24 +8,31 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.ontime.adapter.TugasAdapter // Ganti dengan adapter yang sesuai jika ada
 import com.example.ontime.databinding.FragmentTugasBinding
+import com.example.ontime.setup.AppViewModel
+import com.example.ontime.setup.Tugas
 
 class TugasFragment : Fragment() {
 
-    private var _binding: FragmentTugasBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentTugasBinding
+    private lateinit var appViewModel: AppViewModel
+    private lateinit var tugasAdapter: TugasAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inisialisasi View Binding di sini
-        _binding = FragmentTugasBinding.inflate(inflater, container, false)
+        binding = FragmentTugasBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Inisialisasi ViewModel
+        appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
 
         // Data yang akan ditampilkan dalam Spinner
         val items = listOf("Item 1", "Item 2", "Item 3", "Item 4")
@@ -41,7 +48,6 @@ class TugasFragment : Fragment() {
         binding.mySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedItem = parent.getItemAtPosition(position).toString()
-                // Tampilkan Toast atau lakukan sesuatu dengan item yang dipilih
                 Toast.makeText(requireContext(), "Selected: $selectedItem", Toast.LENGTH_SHORT).show()
             }
 
@@ -49,10 +55,19 @@ class TugasFragment : Fragment() {
                 // Tidak ada yang dipilih
             }
         }
-    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        // Set action untuk button yang menambahkan tugas
+        binding.roundButton.setOnClickListener {
+            val tugasBaru = binding.InputTambahTugas.text.toString()
+
+            if (tugasBaru.isNotEmpty()) {
+                val tugas = Tugas(judul = tugasBaru, isDone = true)
+                appViewModel.insertTugas(tugas)
+                Toast.makeText(requireContext(), "Tugas baru ditambahkan: $tugasBaru", Toast.LENGTH_SHORT).show()
+                binding.InputTambahTugas.text.clear()
+            } else {
+                Toast.makeText(requireContext(), "Mohon masukkan tugas", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 }

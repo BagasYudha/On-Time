@@ -5,8 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "tb_tugas")
 data class Tugas(
-    @PrimaryKey(autoGenerate = true) val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val judul: String,
-    val matkulId: Int, //Foreign key to matkul
     val isDone: Boolean
 )

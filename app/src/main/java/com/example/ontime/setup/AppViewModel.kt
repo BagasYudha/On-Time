@@ -10,9 +10,11 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     // LiveData dari dosenDao langsung diobservasi
     private val dosenDao = AppDatabase.getDatabase(application).dosenDao()
+    private val tugasDao = AppDatabase.getDatabase(application).tugasDao()
 
     // LiveData berisi data dari database, digunakan agar UI dapat mengamati perubahan data secara otomatis
     val allDosen: LiveData<List<Dosen>> = dosenDao.getAllDosen()
+    val allTugas: LiveData<List<Tugas>> = tugasDao.getAllTugas()
 
     // Fungsi untuk memasukkan data yang diinput ke dalam tabel masing masing di database
     // Menggunakan coroutine viewModelScope untuk menjalankan proses ini di background thread
@@ -25,6 +27,12 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteDosen (dosen: Dosen) {
         viewModelScope.launch {
             dosenDao.delete(dosen)
+        }
+    }
+
+    fun insertTugas(tugas: Tugas) {
+        viewModelScope.launch {
+            tugasDao.insert(tugas)
         }
     }
 }
