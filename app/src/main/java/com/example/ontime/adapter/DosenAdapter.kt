@@ -17,7 +17,6 @@ class DosenAdapter(
 
         fun bind(dosen: Dosen) {
             binding.NamaDosen.text = dosen.nama
-            binding.Matkul.text = dosen.nama
             binding.Email.text = dosen.email
 
             binding.btnDelete.setOnClickListener {

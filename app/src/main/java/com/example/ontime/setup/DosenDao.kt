@@ -17,6 +17,5 @@ interface DosenDao {
 
     @Delete
     suspend fun  delete(dosen: Dosen)
-
 }
 
