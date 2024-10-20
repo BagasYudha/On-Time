@@ -20,4 +20,10 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             dosenDao.insertDosen(dosen)
         }
     }
+
+    fun deleteDosen (dosen: Dosen) {
+        viewModelScope.launch {
+            dosenDao.delete(dosen)
+        }
+    }
 }
