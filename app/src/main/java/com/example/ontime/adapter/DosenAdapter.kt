@@ -6,20 +6,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemDosenBinding
 import com.example.ontime.setup.Dosen
 
-class DosenAdapter(private var dosen: List<Dosen>, private val onDeleteClick: (Dosen) -> Unit) :
+class DosenAdapter(
+    private var dosen: List<Dosen>,
+    private val onDeleteClick: (Dosen) -> Unit
+) :
     RecyclerView.Adapter<DosenAdapter.DosenViewHolder>() {
 
     inner class DosenViewHolder(private val binding: ItemDosenBinding) :
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(dosen: Dosen) {
-                binding.NamaDosen.text = dosen.nama
-                binding.Matkul.text = dosen.nama
-                binding.Email.text = dosen.email
 
-                binding.btnDelete.setOnClickListener {
-                    onDeleteClick(dosen)
-                }
+        fun bind(dosen: Dosen) {
+            binding.NamaDosen.text = dosen.nama
+            binding.Matkul.text = dosen.nama
+            binding.Email.text = dosen.email
+
+            binding.btnDelete.setOnClickListener {
+                onDeleteClick(dosen)
             }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DosenViewHolder {

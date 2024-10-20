@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:id="@+id/itemSelesaiBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/blue_border"
@@ -28,6 +29,7 @@
 
             <!-- Task Title -->
             <TextView
+                android:id="@+id/namaTugas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Nama Tugas"
@@ -36,6 +38,7 @@
 
             <!-- Task Subtitle -->
             <TextView
+                android:id="@+id/mataKuliah"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

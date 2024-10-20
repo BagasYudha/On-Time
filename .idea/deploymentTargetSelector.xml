@@ -2,22 +2,8 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-      <SelectionState runConfigName="OneTime">
+      <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-        <DropdownSelection timestamp="2024-10-19T09:51:31.918008200Z">
-          <Target type="DEFAULT_BOOT">
-            <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\bayud\.android\avd\Pixel_7_API_35.avd" />
-            </handle>
-          </Target>
-        </DropdownSelection>
-        <DialogSelection />
->>>>>>> aa10976c35ece40502b17516b378fdc96a816eb7
->>>>>>> 5bbd6d9b461b3144a220469161f9c2fcd0296f14
       </SelectionState>
     </selectionStates>
   </component>

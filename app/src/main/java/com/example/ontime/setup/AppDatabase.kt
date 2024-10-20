@@ -5,30 +5,28 @@ import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instanc
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-
-@Database(
-    entities = [Dosen::class,
-                MataKuliah::class,
-                Tugas::class],
-    version = 1,
-    exportSchema = false
-)
+@Database(entities = [Tugas::class, Dosen::class], version = 2)  // Naikkan versi dari 1 ke 2
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun dosenDao(): DosenDao
-    abstract fun matkulDao(): MataKuliahDao
     abstract fun tugasDao(): TugasDao
+    abstract fun dosenDao(): DosenDao
 
     companion object {
         @Volatile
-        private var instance: AppDatabase? = null
+        private var INSTANCE: AppDatabase? = null
 
-        fun getDatabase(context: Context): AppDatabase =
-            instance ?: synchronized(this) {
-                instance ?: Room.databaseBuilder(
+        fun getDatabase(context: Context): AppDatabase {
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDatabase::class.java,
-                    "app_database"
-                ).build().also { instance = it }
+                    "ontime_database"
+                )
+                    // Tambahkan opsi migrasi atau fallback
+                    .fallbackToDestructiveMigration()  // Hapus semua data dan buat ulang tabel
+                    .build()
+                INSTANCE = instance
+                instance
             }
+        }
     }
 }
