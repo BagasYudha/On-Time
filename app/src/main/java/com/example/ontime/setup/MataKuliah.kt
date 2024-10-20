@@ -7,5 +7,5 @@ import androidx.room.PrimaryKey
 data class MataKuliah(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val matkul: String,
-    val dosenId: Int // Foreign key ke Dosen
+    val sks: Int
 )
