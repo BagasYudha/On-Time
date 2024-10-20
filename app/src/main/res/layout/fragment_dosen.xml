@@ -1,10 +1,9 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".fragment.DosenFragment"
     tools:ignore="ExtraText">
 
@@ -13,115 +12,157 @@
         android:id="@+id/DaftarDosen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Daftar Dosen"
+        android:text="Daftar Dosen dan Mata Kuliah"
         android:textColor="@color/black"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/TambahDosen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/poppins_semibold"
-        android:text="Tambah Dosen Baru"
+        android:text="Daftar Dosen"
         android:textColor="@color/body"
         android:textSize="14dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/DaftarDosen"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/DaftarDosen" />
 
     <EditText
         android:id="@+id/TambahDataDosen"
         android:layout_width="0dp"
-         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:hint="Tambahkan Data Dosen"
-        android:background="@drawable/edittext_background"
-        android:fontFamily="@font/poppins_regular"
-        android:textSize="12sp"
-        android:padding="12dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/TambahDosen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/MataKuliah"
-        app:layout_constraintWidth_percent="0.5" />
-
-    <EditText
-        android:id="@+id/MataKuliah"
-        android:layout_width="160dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/edittext_background"
         android:fontFamily="@font/poppins_regular"
-        android:hint="Mata Kuliah"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="10dp"
+        android:hint="Nama Dosen"
         android:padding="12dp"
         android:textSize="12sp"
-        app:layout_constraintStart_toEndOf="@+id/TambahDataDosen"
-        app:layout_constraintTop_toTopOf="@+id/TambahDataDosen"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/EmailDosen"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TambahDosen"
         app:layout_constraintWidth_percent="0.5" />
 
     <EditText
         android:id="@+id/EmailDosen"
-        android:layout_width="0dp"
+        android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="8dp"
         android:background="@drawable/edittext_background"
         android:fontFamily="@font/poppins_regular"
-        android:hint="Masukkan Email dosen"
-        android:textSize="12sp"
+        android:hint="Email Dosen"
         android:padding="12dp"
-        app:layout_constraintStart_toStartOf="@+id/TambahDataDosen"
-        app:layout_constraintTop_toBottomOf="@+id/TambahDataDosen"
-        app:layout_constraintEnd_toStartOf="@+id/round_button"  />
+        android:textSize="12sp"
+        app:layout_constraintRight_toLeftOf="@id/round_button"
+        app:layout_constraintStart_toEndOf="@+id/TambahDataDosen"
+        app:layout_constraintTop_toTopOf="@+id/TambahDataDosen"
+        app:layout_constraintWidth_percent="0.5" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/round_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        app:iconGravity="textTop"
-        app:icon="@drawable/ic_arrow_upward"
-        android:backgroundTint="@color/maincolor"
-        app:cornerRadius="50dp"
-        android:padding="8dp"
-        app:iconSize="30dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/maincolor"
+        android:padding="8dp"
+        app:cornerRadius="50dp"
+        app:icon="@drawable/ic_arrow_upward"
+        app:iconGravity="textTop"
+        app:iconSize="30dp"
         app:layout_constraintBottom_toBottomOf="@id/EmailDosen"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/EmailDosen"
         app:layout_constraintTop_toTopOf="@id/EmailDosen" />
-
-    <TextView
-        android:id="@+id/DaftarDosendanMatkul"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Daftar Dosen dan Mata Kuliah"
-        android:textColor="@color/body"
-        android:textSize="14dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EmailDosen" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvDaftarDosen"
-        tools:listitem="@layout/item_dosen"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scrollbars="vertical"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/DaftarDosendanMatkul"
-        app:layout_constraintTop_toBottomOf="@id/DaftarDosendanMatkul" />
+        android:scrollbars="vertical"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="@id/TambahDataDosen"
+        app:layout_constraintTop_toBottomOf="@id/TambahDataDosen"
+        tools:listitem="@layout/item_dosen" />
+
+    <TextView
+        android:id="@+id/tvDaftarMatkul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Daftar Matkul"
+        android:textColor="@color/body"
+        android:textSize="14dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvDaftarDosen" />
+
+    <EditText
+        android:id="@+id/etNamaMatkul"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/edittext_background"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Nama Matkul"
+        android:padding="12dp"
+        android:textSize="12sp"
+        app:layout_constraintRight_toLeftOf="@id/etSks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDaftarMatkul"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <EditText
+        android:id="@+id/etSks"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/edittext_background"
+        android:fontFamily="@font/poppins_regular"
+        android:hint="Jumlah SKS"
+        android:padding="12dp"
+        android:textSize="12sp"
+        app:layout_constraintRight_toLeftOf="@id/round_button_matkul"
+        app:layout_constraintStart_toEndOf="@+id/etNamaMatkul"
+        app:layout_constraintTop_toTopOf="@+id/etNamaMatkul"
+        app:layout_constraintWidth_percent="0.5" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/round_button_matkul"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="15dp"
+        android:backgroundTint="@color/maincolor"
+        android:padding="8dp"
+        app:cornerRadius="50dp"
+        app:icon="@drawable/ic_arrow_upward"
+        app:iconGravity="textTop"
+        app:iconSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@id/etSks"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/etSks" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMatkul"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:scrollbars="vertical"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintTop_toBottomOf="@id/etNamaMatkul"
+        tools:listitem="@layout/item_matkul" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

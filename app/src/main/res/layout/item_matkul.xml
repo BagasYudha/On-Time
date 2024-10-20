@@ -20,11 +20,11 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <TextView
-            android:id="@+id/NamaDosen"
+            android:id="@+id/namaMatkul"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="Nama Dosen"
+            android:text="Nama Matkul"
             android:textColor="@color/body"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -38,18 +38,18 @@
             android:layout_width="0dp"
             android:layout_height="2dp"
             android:background="@color/maincolor"
-            app:layout_constraintTop_toBottomOf="@id/NamaDosen"
+            app:layout_constraintTop_toBottomOf="@id/namaMatkul"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginVertical="4dp"
             android:layout_marginBottom="8dp"/>
 
         <TextView
-            android:id="@+id/Email"
+            android:id="@+id/sksMatkul"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="Email dosen"
+            android:text="Jumlah SKS"
             android:textColor="@color/body"
             android:textSize="12sp"
             app:layout_constraintTop_toBottomOf="@id/divider"
