@@ -32,7 +32,11 @@ class DosenFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
-        dosenAdapter = DosenAdapter(listOf())
+        dosenAdapter = DosenAdapter(listOf()) {dosen ->
+            appViewModel.deleteDosen(dosen)
+
+            Toast.makeText(requireContext(), "Dosen ${dosen.nama} berhasil dihapus", Toast.LENGTH_SHORT) .show()
+        }
 
         binding.rvDaftarDosen.adapter = dosenAdapter
         binding.rvDaftarDosen.layoutManager = LinearLayoutManager(requireContext())
@@ -42,7 +46,7 @@ class DosenFragment : Fragment() {
             dosenAdapter.updateDosen(dosen)
         }
 
-        // Tambahkan tugas baru
+        // Tambahkan dosen baru
         binding.roundButton.setOnClickListener {
             val namaDosen = binding.TambahDataDosen.text.toString()
             val emailDosen = binding.EmailDosen.text.toString()
@@ -51,6 +55,8 @@ class DosenFragment : Fragment() {
             if (namaDosen.isNotEmpty() && emailDosen.isNotEmpty()) {
                 val dosen = Dosen(nama = namaDosen, email = emailDosen)
                 appViewModel.insertDosen(dosen) // Memanggil method untuk menyimpan dosen
+
+                Toast.makeText(requireContext(), "Dosen $namaDosen berhasil ditambahkan", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Mohon lengkapi semua data", Toast.LENGTH_SHORT).show()
             }
