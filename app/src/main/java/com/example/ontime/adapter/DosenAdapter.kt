@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemDosenBinding
 import com.example.ontime.setup.Dosen
 
-class DosenAdapter(private var dosen: List<Dosen>) :
+class DosenAdapter(private var dosen: List<Dosen>, private val onDeleteClick: (Dosen) -> Unit) :
     RecyclerView.Adapter<DosenAdapter.DosenViewHolder>() {
 
     inner class DosenViewHolder(private val binding: ItemDosenBinding) :
@@ -15,6 +15,10 @@ class DosenAdapter(private var dosen: List<Dosen>) :
                 binding.NamaDosen.text = dosen.nama
                 binding.Matkul.text = dosen.nama
                 binding.Email.text = dosen.email
+
+                binding.btnDelete.setOnClickListener {
+                    onDeleteClick(dosen)
+                }
             }
     }
 
@@ -33,4 +37,5 @@ class DosenAdapter(private var dosen: List<Dosen>) :
         dosen = newDosen.sortedByDescending { it.id }
         notifyDataSetChanged()
     }
+
 }

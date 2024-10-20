@@ -29,4 +29,10 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
             matkulDao.insertMatkul(mataKuliah)
         }
     }
+
+    fun deleteDosen (dosen: Dosen) {
+        viewModelScope.launch {
+            dosenDao.delete(dosen)
+        }
+    }
 }
