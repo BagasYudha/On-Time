@@ -16,6 +16,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunnerArguments["clearPackageData"] = "true"
+        vectorDrawables {
+            useSupportLibrary = true
+        }
     }
 
     buildTypes {
@@ -44,10 +48,6 @@ android {
 
 dependencies {
     implementation(libs.androidx.navigation.fragment)
-    // Android Test
-    androidTestImplementation("androidx.test:runner:1.6.2")
-    androidTestUtil("androidx.test:orchestrator:1.5.0")
-
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
 
@@ -65,13 +65,15 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestUtil("androidx.test:orchestrator:1.5.0")
 
     // AndroidX Lifecycle & ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
     implementation("androidx.activity:activity-ktx:1.7.0")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.1")
 
-//     Room Database
+    // Room Database
     ksp("androidx.room:room-compiler:2.6.1")
 
     val room_version = "2.6.1"
@@ -80,11 +82,11 @@ dependencies {
     ksp("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
     testImplementation("androidx.room:room-testing:$room_version")
-//
+
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
 
-    implementation ("androidx.room:room-runtime:$room_version")
-    implementation ("androidx.room:room-ktx:$room_version")
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1" )
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
 }

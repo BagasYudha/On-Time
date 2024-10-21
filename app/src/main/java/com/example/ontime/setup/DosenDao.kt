@@ -17,5 +17,12 @@ interface DosenDao {
 
     @Delete
     suspend fun  delete(dosen: Dosen)
+
+    // Database Testing
+    @Insert
+    fun insertDosenTest(dosen: Dosen): Long
+
+    @Query("SELECT * FROM tb_dosen")
+    fun getAllDosenTest(): List<Dosen>
 }
 

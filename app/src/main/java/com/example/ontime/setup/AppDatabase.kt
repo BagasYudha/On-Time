@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModelProvider.NewInstanceFactory.Companion.instanc
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-@Database(entities = [Tugas::class, Dosen::class, MataKuliah::class], version = 2)  // Naikkan versi dari 1 ke 2
+@Database(entities = [Tugas::class, Dosen::class, MataKuliah::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun tugasDao(): TugasDao
     abstract fun dosenDao(): DosenDao
