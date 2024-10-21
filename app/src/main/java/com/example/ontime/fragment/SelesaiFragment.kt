@@ -1,43 +1,54 @@
 package com.example.ontime.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ontime.R
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.example.ontime.adapter.SelesaiAdapter
+import com.example.ontime.adapter.TugasAdapter
+import com.example.ontime.databinding.FragmentDosenBinding
+import com.example.ontime.databinding.FragmentSelesaiBinding
+import com.example.ontime.setup.AppViewModel
 
 class SelesaiFragment : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private lateinit var binding: FragmentSelesaiBinding
+    private lateinit var appViewModel: AppViewModel
+    private lateinit var selesaiAdapter: SelesaiAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_selesai, container, false)
+    ): View {
+        binding = FragmentSelesaiBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            SelesaiFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
+        selesaiAdapter = SelesaiAdapter(emptyList()) { tugas ->
+            // Panggil fungsi untuk mengubah status tugas menjadi tidak selesai
+            appViewModel.incompleteTugas(tugas)
+        }
+
+        binding.rvDaftarSelesai.adapter = selesaiAdapter
+        binding.rvDaftarSelesai.layoutManager = LinearLayoutManager(requireContext())
+
+        // Observasi data dari ViewModel
+        appViewModel.allTugas.observe(viewLifecycleOwner) { tugas ->
+            selesaiAdapter.updateTugas(tugas)
+        }
+
+        // Amati LiveData untuk tugas yang sudah selesai
+        appViewModel.tugasSelesai.observe(viewLifecycleOwner) { tugasList ->
+            selesaiAdapter.updateTugas(tugasList)
+        }
     }
 }
