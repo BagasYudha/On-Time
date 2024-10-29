@@ -23,7 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         // Menghubungkan NavController dengan NavHostFragment
         val navController = findNavController(R.id.fragmentContainerView)
-        val appBarConfiguration = AppBarConfiguration(setOf(R.id.tugasFragment, R.id.dosenFragment, R.id.selesaiFragment))
 
         // Setup BottomNavigationView dengan NavController
         binding.bottomBar.setupWithNavController(navController)
