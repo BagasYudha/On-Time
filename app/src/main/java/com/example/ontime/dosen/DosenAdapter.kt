@@ -1,10 +1,9 @@
-package com.example.ontime.adapter
+package com.example.ontime.dosen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemDosenBinding
-import com.example.ontime.setup.Dosen
 
 class DosenAdapter(
     private var dosen: List<Dosen>,

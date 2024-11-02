@@ -1,4 +1,4 @@
-package com.example.ontime.fragment
+package com.example.ontime.tugas
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,10 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ontime.adapter.TugasAdapter // Ganti dengan adapter yang sesuai jika ada
 import com.example.ontime.databinding.FragmentTugasBinding
 import com.example.ontime.setup.AppViewModel
-import com.example.ontime.setup.Tugas
 
 class TugasFragment : Fragment() {
 

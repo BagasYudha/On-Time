@@ -1,10 +1,9 @@
-package com.example.ontime.adapter
+package com.example.ontime.matkul
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemMatkulBinding
-import com.example.ontime.setup.MataKuliah
 
 class MatkulAdapter(
     private var matkul: List<MataKuliah>,

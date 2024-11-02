@@ -5,8 +5,8 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.ontime.setup.AppDatabase
-import com.example.ontime.setup.Dosen
-import com.example.ontime.setup.DosenDao
+import com.example.ontime.dosen.Dosen
+import com.example.ontime.dosen.DosenDao
 import junit.framework.TestCase.assertEquals
 import org.junit.After
 import org.junit.Before

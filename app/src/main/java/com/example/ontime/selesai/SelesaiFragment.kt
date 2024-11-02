@@ -1,17 +1,12 @@
-package com.example.ontime.fragment
+package com.example.ontime.selesai
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ontime.R
-import com.example.ontime.adapter.SelesaiAdapter
-import com.example.ontime.adapter.TugasAdapter
-import com.example.ontime.databinding.FragmentDosenBinding
 import com.example.ontime.databinding.FragmentSelesaiBinding
 import com.example.ontime.setup.AppViewModel
 

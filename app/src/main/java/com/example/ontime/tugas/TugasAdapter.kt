@@ -1,10 +1,9 @@
-package com.example.ontime.adapter
+package com.example.ontime.tugas
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemTugasBinding
-import com.example.ontime.setup.Tugas
 
 class TugasAdapter(
     private var tugas: List<Tugas>,

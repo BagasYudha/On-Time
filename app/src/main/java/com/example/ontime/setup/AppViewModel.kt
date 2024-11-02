@@ -4,7 +4,9 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.flow.Flow
+import com.example.ontime.dosen.Dosen
+import com.example.ontime.matkul.MataKuliah
+import com.example.ontime.tugas.Tugas
 import kotlinx.coroutines.launch
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {

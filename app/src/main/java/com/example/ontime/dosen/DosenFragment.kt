@@ -1,4 +1,4 @@
-package com.example.ontime.fragment
+package com.example.ontime.dosen
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,12 +8,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.ontime.adapter.DosenAdapter
-import com.example.ontime.adapter.MatkulAdapter
+import com.example.ontime.matkul.MatkulAdapter
 import com.example.ontime.databinding.FragmentDosenBinding
 import com.example.ontime.setup.AppViewModel
-import com.example.ontime.setup.Dosen
-import com.example.ontime.setup.MataKuliah
+import com.example.ontime.matkul.MataKuliah
 
 
 class DosenFragment : Fragment() {

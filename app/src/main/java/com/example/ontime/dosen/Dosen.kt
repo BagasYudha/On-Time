@@ -1,6 +1,5 @@
-package com.example.ontime.setup
+package com.example.ontime.dosen
 
-import android.provider.ContactsContract.CommonDataKinds.Email
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 

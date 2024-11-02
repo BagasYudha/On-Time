@@ -1,10 +1,10 @@
-package com.example.ontime.adapter
+package com.example.ontime.selesai
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemSelesaiBinding
-import com.example.ontime.setup.Tugas
+import com.example.ontime.tugas.Tugas
 
 class SelesaiAdapter(
 

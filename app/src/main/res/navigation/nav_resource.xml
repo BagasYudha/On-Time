@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/tugasFragment"
-        android:name="com.example.ontime.fragment.TugasFragment"
+        android:name="com.example.ontime.tugas.TugasFragment"
         android:label="tugas"
         tools:layout="@layout/fragment_tugas" />
     <fragment
         android:id="@+id/dosenFragment"
-        android:name="com.example.ontime.fragment.DosenFragment"
+        android:name="com.example.ontime.dosen.DosenFragment"
         android:label="dosen"
         tools:layout="@layout/fragment_dosen" />
     <fragment
         android:id="@+id/selesaiFragment"
-        android:name="com.example.ontime.fragment.SelesaiFragment"
+        android:name="com.example.ontime.selesai.SelesaiFragment"
         android:label="selesai"
         tools:layout="@layout/fragment_selesai" />
 </navigation>
