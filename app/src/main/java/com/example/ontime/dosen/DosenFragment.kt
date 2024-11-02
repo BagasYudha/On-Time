@@ -15,10 +15,10 @@ import com.example.ontime.matkul.MataKuliah
 
 
 class DosenFragment : Fragment() {
+
     private lateinit var binding: FragmentDosenBinding
     private lateinit var appViewModel: AppViewModel
     private lateinit var dosenAdapter: DosenAdapter
-    private lateinit var matkulAdapter: MatkulAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,34 +58,6 @@ class DosenFragment : Fragment() {
                 val dosen = Dosen(nama = namaDosen, email = emailDosen)
                 appViewModel.insertDosen(dosen)
                 Toast.makeText(requireContext(), "Dosen $namaDosen berhasil ditambahkan", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(requireContext(), "Mohon lengkapi semua data", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        // Untuk Matkul
-        matkulAdapter = MatkulAdapter(listOf()) { matkul ->
-            appViewModel.deleteMatkul(matkul)
-            Toast.makeText(requireContext(), "Mata Kuliah ${matkul.matkul} berhasil dihapus", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.rvMatkul.adapter = matkulAdapter
-        binding.rvMatkul.layoutManager = LinearLayoutManager(requireContext())
-
-        // Observasi data dari ViewModel
-        appViewModel.allMatkul.observe(viewLifecycleOwner) { matkulList ->
-            matkulAdapter.updateMataKuliah(matkulList)
-        }
-
-        // Tambahkan matkul baru
-        binding.roundButtonMatkul.setOnClickListener {
-            val matkul = binding.etNamaMatkul.text.toString()
-            val sks = binding.etSks.text.toString()
-
-            if (matkul.isNotEmpty() && sks.isNotEmpty()) {
-                val matkulObj = MataKuliah(matkul = matkul, sks = sks.toInt()) // Pastikan menggunakan kelas yang benar
-                appViewModel.insertMatkul(matkulObj)
-                Toast.makeText(requireContext(), "Mata Kuliah $matkul berhasil ditambahkan", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Mohon lengkapi semua data", Toast.LENGTH_SHORT).show()
             }

@@ -20,4 +20,9 @@
         android:name="com.example.ontime.selesai.SelesaiFragment"
         android:label="selesai"
         tools:layout="@layout/fragment_selesai" />
+    <fragment
+        android:id="@+id/matkulFragment"
+        android:name="com.example.ontime.matkul.MatkulFragment"
+        android:label="fragment_matkul"
+        tools:layout="@layout/fragment_matkul" />
 </navigation>

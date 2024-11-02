@@ -10,6 +10,10 @@
         android:title="Dosen"
         android:icon="@drawable/user_regular"/>
     <item
+        android:id="@+id/matkulFragment"
+        android:title="Matkul"
+        android:icon="@drawable/baseline_menu_book_24"/>
+    <item
         android:id="@+id/selesaiFragment"
         android:title="Selesai"
         android:icon="@drawable/circle_check_regular"/>

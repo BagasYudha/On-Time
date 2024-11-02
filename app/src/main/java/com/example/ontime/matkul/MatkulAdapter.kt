@@ -16,7 +16,7 @@ class MatkulAdapter(
 
         fun bind(matkul: MataKuliah) {
             binding.namaMatkul.text = matkul.matkul
-            binding.sksMatkul.text = matkul.sks.toString()
+            binding.sksMatkul.text = "${matkul.sks} SKS"
 
             binding.btnDeleteMatkul.setOnClickListener {
                 onDeleteClick(matkul)
