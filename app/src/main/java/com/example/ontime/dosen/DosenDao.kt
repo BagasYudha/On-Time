@@ -9,17 +9,17 @@ import androidx.room.Query
 @Dao
 interface DosenDao {
     @Insert
-    suspend fun insertDosen(dosen: Dosen): Long
+    suspend fun insertDosen(vararg dosen: Dosen)
 
     @Query("SELECT * FROM tb_dosen")
     fun getAllDosen(): LiveData<List<Dosen>>
 
     @Delete
-    suspend fun  delete(dosen: Dosen)
+    suspend fun deleteDosen(vararg dosen: Dosen)
 
     // Database Testing
     @Insert
-    fun insertDosenTest(dosen: Dosen): Long
+    fun insertDosenTest(vararg dosen: Dosen)
 
     @Query("SELECT * FROM tb_dosen")
     fun getAllDosenTest(): List<Dosen>

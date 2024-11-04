@@ -24,7 +24,6 @@ class DosenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentDosenBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -37,7 +36,7 @@ class DosenFragment : Fragment() {
 
         // Untuk Dosen
         dosenAdapter = DosenAdapter(listOf()) { dosen ->
-            appViewModel.deleteDosen(dosen)
+            appViewModel.deleteDosenVm(dosen)
             Toast.makeText(requireContext(), "Dosen ${dosen.nama} berhasil dihapus", Toast.LENGTH_SHORT).show()
         }
 
@@ -56,7 +55,7 @@ class DosenFragment : Fragment() {
 
             if (namaDosen.isNotEmpty() && emailDosen.isNotEmpty()) {
                 val dosen = Dosen(nama = namaDosen, email = emailDosen)
-                appViewModel.insertDosen(dosen)
+                appViewModel.insertDosenVm(dosen)
                 Toast.makeText(requireContext(), "Dosen $namaDosen berhasil ditambahkan", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Mohon lengkapi semua data", Toast.LENGTH_SHORT).show()

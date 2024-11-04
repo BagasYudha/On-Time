@@ -5,35 +5,49 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.ontime.dosen.Dosen
+import com.example.ontime.dosen.DosenRepository
 import com.example.ontime.matkul.MataKuliah
 import com.example.ontime.tugas.Tugas
 import kotlinx.coroutines.launch
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
 
+    // Inisialisasi Repository
+    private val dosenRepository: DosenRepository
+
+    // Observasi Database
+    val allDosen: LiveData<List<Dosen>>
+
+    init {
+        val dosenDao = AppDatabase.getDatabase(application).dosenDao()
+
+        dosenRepository = DosenRepository(dosenDao)
+
+        allDosen = dosenRepository.allDosen
+    }
+
+
+
     // LiveData dari dosenDao langsung diobservasi
-    private val dosenDao = AppDatabase.getDatabase(application).dosenDao()
     private val tugasDao = AppDatabase.getDatabase(application).tugasDao()
     private val matkulDao = AppDatabase.getDatabase(application).matkulDao()
 
     // LiveData berisi data dari database, digunakan agar UI dapat mengamati perubahan data secara otomatis
-    val allDosen: LiveData<List<Dosen>> = dosenDao.getAllDosen()
     val allTugas: LiveData<List<Tugas>> = tugasDao.getTugasByStatus()
     val tugasSelesai: LiveData<List<Tugas>> = tugasDao.getTugasSelesai()
     val allMatkul: LiveData<List<MataKuliah>> = matkulDao.getAllMataKuliah()
 
 
-    // Fungsi untuk memasukkan data yang diinput ke dalam tabel masing masing di database
     // Menggunakan coroutine viewModelScope untuk menjalankan proses ini di background thread
-    fun insertDosen(dosen: Dosen) {
+    fun insertDosenVm(dosen: Dosen) {
         viewModelScope.launch {
-            dosenDao.insertDosen(dosen)  // Memasukkan data dosen ke database
+            dosenRepository.insertDosenRep(dosen)  // Memasukkan data dosen ke database
         }
     }
 
-    fun deleteDosen (dosen: Dosen) {
+    fun deleteDosenVm(dosen: Dosen) {
         viewModelScope.launch {
-            dosenDao.delete(dosen)
+            dosenRepository.deleteDosenRep(dosen)
         }
     }
 
