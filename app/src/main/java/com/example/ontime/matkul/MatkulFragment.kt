@@ -38,8 +38,12 @@ class MatkulFragment : Fragment() {
 
         // Untuk Matkul
         matkulAdapter = MatkulAdapter(listOf()) { matkul ->
-            appViewModel.deleteMatkul(matkul)
-            Toast.makeText(requireContext(), "Mata Kuliah ${matkul.matkul} berhasil dihapus", Toast.LENGTH_SHORT).show()
+            appViewModel.deleteMatkulVm(matkul)
+            Toast.makeText(
+                requireContext(),
+                "Mata Kuliah ${matkul.matkul} berhasil dihapus",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
         binding.rvMatkul.adapter = matkulAdapter
@@ -56,11 +60,19 @@ class MatkulFragment : Fragment() {
             val sks = binding.etSks.text.toString()
 
             if (matkul.isNotEmpty() && sks.isNotEmpty()) {
-                val matkulObj = MataKuliah(matkul = matkul, sks = sks.toInt()) // Pastikan menggunakan kelas yang benar
-                appViewModel.insertMatkul(matkulObj)
-                Toast.makeText(requireContext(), "Mata Kuliah $matkul berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+                val matkulObj = MataKuliah(
+                    matkul = matkul,
+                    sks = sks.toInt()
+                ) // Pastikan menggunakan kelas yang benar
+                appViewModel.insertMatkulVm(matkulObj)
+                Toast.makeText(
+                    requireContext(),
+                    "Mata Kuliah $matkul berhasil ditambahkan",
+                    Toast.LENGTH_SHORT
+                ).show()
             } else {
-                Toast.makeText(requireContext(), "Mohon lengkapi semua data", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Mohon lengkapi semua data", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 

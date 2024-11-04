@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.ontime.dosen.Dosen
 import com.example.ontime.dosen.DosenRepository
 import com.example.ontime.matkul.MataKuliah
+import com.example.ontime.matkul.MatkulRepository
 import com.example.ontime.tugas.Tugas
 import kotlinx.coroutines.launch
 
@@ -14,29 +15,31 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     // Inisialisasi Repository
     private val dosenRepository: DosenRepository
+    private val matkulRepository: MatkulRepository
 
     // Observasi Database
     val allDosen: LiveData<List<Dosen>>
+    val allMatkul: LiveData<List<MataKuliah>>
 
     init {
         val dosenDao = AppDatabase.getDatabase(application).dosenDao()
+        val matkulDao = AppDatabase.getDatabase(application).matkulDao()
 
         dosenRepository = DosenRepository(dosenDao)
+        matkulRepository = MatkulRepository(matkulDao)
 
         allDosen = dosenRepository.allDosen
+        allMatkul = matkulRepository.allMatkul
     }
-
 
 
     // LiveData dari dosenDao langsung diobservasi
     private val tugasDao = AppDatabase.getDatabase(application).tugasDao()
-    private val matkulDao = AppDatabase.getDatabase(application).matkulDao()
+
 
     // LiveData berisi data dari database, digunakan agar UI dapat mengamati perubahan data secara otomatis
     val allTugas: LiveData<List<Tugas>> = tugasDao.getTugasByStatus()
     val tugasSelesai: LiveData<List<Tugas>> = tugasDao.getTugasSelesai()
-    val allMatkul: LiveData<List<MataKuliah>> = matkulDao.getAllMataKuliah()
-
 
     // Menggunakan coroutine viewModelScope untuk menjalankan proses ini di background thread
     fun insertDosenVm(dosen: Dosen) {
@@ -48,6 +51,18 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     fun deleteDosenVm(dosen: Dosen) {
         viewModelScope.launch {
             dosenRepository.deleteDosenRep(dosen)
+        }
+    }
+
+    fun insertMatkulVm(matkul: MataKuliah) {
+        viewModelScope.launch {
+            matkulRepository.insertMatkulRep(matkul)
+        }
+    }
+
+    fun deleteMatkulVm(matkul: MataKuliah) {
+        viewModelScope.launch {
+            matkulRepository.deleteMatkulRep(matkul)
         }
     }
 
@@ -69,15 +84,4 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun insertMatkul(mataKuliah: MataKuliah) {
-        viewModelScope.launch {
-            matkulDao.insertMatkul(mataKuliah)
-        }
-    }
-
-    fun deleteMatkul(matkul: MataKuliah) {
-        viewModelScope.launch {
-            matkulDao.deleteMatkul(matkul.id)
-        }
-    }
 }
