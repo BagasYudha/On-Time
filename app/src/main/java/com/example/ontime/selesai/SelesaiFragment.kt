@@ -28,18 +28,13 @@ class SelesaiFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
+
         selesaiAdapter = SelesaiAdapter(emptyList()) { tugas ->
-            // Panggil fungsi untuk mengubah status tugas menjadi tidak selesai
-            appViewModel.incompleteTugas(tugas)
+            appViewModel.markTugasIncompleteVm(tugas)
         }
 
         binding.rvDaftarSelesai.adapter = selesaiAdapter
         binding.rvDaftarSelesai.layoutManager = LinearLayoutManager(requireContext())
-
-        // Observasi data dari ViewModel
-        appViewModel.allTugas.observe(viewLifecycleOwner) { tugas ->
-            selesaiAdapter.updateTugas(tugas)
-        }
 
         // Amati LiveData untuk tugas yang sudah selesai
         appViewModel.tugasSelesai.observe(viewLifecycleOwner) { tugasList ->

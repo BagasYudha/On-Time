@@ -33,14 +33,52 @@ class TugasFragment : Fragment() {
 
         // Inisialisasi
         appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
-        tugasAdapter = TugasAdapter(listOf()) {tugas ->
-            appViewModel.deleteTugas(tugas)
 
-            Toast.makeText(requireContext(), "Dosen ${tugas.judul} sudah selesai", Toast.LENGTH_SHORT) .show()
+        tugasAdapter = TugasAdapter(listOf()) { tugas ->
+            appViewModel.markTugasCompleteVm(tugas)
+
+            Toast.makeText(
+                requireContext(),
+                "Dosen ${tugas.judul} sudah selesai",
+                Toast.LENGTH_SHORT
+            ).show()
         }
 
+        binding.RvDaftarTugas.adapter = tugasAdapter
+        binding.RvDaftarTugas.layoutManager = LinearLayoutManager(requireContext())
+
+        // Observasi data dari ViewModel
+        appViewModel.tugasBelumSelesai.observe(viewLifecycleOwner) { tugas ->
+            tugasAdapter.updateTugas(tugas)
+        }
+
+        // Set action untuk button yang menambahkan tugas
+        binding.roundButton.setOnClickListener {
+            val tugasBaru = binding.InputTambahTugas.text.toString()
+
+            if (tugasBaru.isNotEmpty() && matkulDipilih != null) {
+                val tugas = Tugas(judul = tugasBaru, matkul = matkulDipilih!!, isDone = false)
+                appViewModel.insertTugasVm(tugas)
+                Toast.makeText(
+                    requireContext(),
+                    "Tugas baru ditambahkan: $tugasBaru",
+                    Toast.LENGTH_SHORT
+                ).show()
+                binding.InputTambahTugas.text.clear()
+            } else {
+                Toast.makeText(
+                    requireContext(),
+                    "Mohon masukkan tugas dan pilih mata kuliah",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+
+
         // Data yang akan ditampilkan dalam Spinner
-        val items = listOf("PAJ", "Mobile 2", "Jarkom 2", "Pancasila", "Bahasa Inggris", "Sistem Cerdas")
+        val items =
+            listOf("PAJ", "Mobile 2", "Jarkom 2", "Pancasila", "Bahasa Inggris", "Sistem Cerdas")
 
         // Buat ArrayAdapter untuk Spinner
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, items)
@@ -51,34 +89,17 @@ class TugasFragment : Fragment() {
 
         // Set listener untuk menangani pilihan spinner matkul
         binding.mySpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
                 matkulDipilih = parent.getItemAtPosition(position).toString()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
                 matkulDipilih = null
-            }
-        }
-
-        binding.RvDaftarTugas.adapter = tugasAdapter
-        binding.RvDaftarTugas.layoutManager = LinearLayoutManager(requireContext())
-
-        // Observasi data dari ViewModel
-        appViewModel.allTugas.observe(viewLifecycleOwner){ tugas ->
-            tugasAdapter.updateTugas(tugas)
-        }
-
-        // Set action untuk button yang menambahkan tugas
-        binding.roundButton.setOnClickListener {
-            val tugasBaru = binding.InputTambahTugas.text.toString()
-
-            if (tugasBaru.isNotEmpty() && matkulDipilih != null) {
-                val tugas = Tugas(judul = tugasBaru, matkul = matkulDipilih!!, isDone = false)
-                appViewModel.insertTugas(tugas)
-                Toast.makeText(requireContext(), "Tugas baru ditambahkan: $tugasBaru", Toast.LENGTH_SHORT).show()
-                binding.InputTambahTugas.text.clear()
-            } else {
-                Toast.makeText(requireContext(), "Mohon masukkan tugas dan pilih mata kuliah", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -15,9 +15,9 @@ class TugasAdapter(
 
         fun bind(tugas: Tugas) {
             binding.tvNamaTugas.text = tugas.judul
-            binding.tvMataKuliah.text= tugas.matkul
+            binding.tvMataKuliah.text = tugas.matkul
 
-            binding.itemTugas.setOnClickListener{
+            binding.itemTugas.setOnClickListener {
                 onDeleteClick(tugas)
             }
         }

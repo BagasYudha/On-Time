@@ -8,23 +8,19 @@ import androidx.room.Query
 @Dao
 interface TugasDao {
     @Insert
-    suspend fun insert(tugas: Tugas)
+    suspend fun insertTugas(vararg tugas: Tugas)
 
     // Mengambil tugas yang belum selesai (isDone = false) menggunakan LiveData
     @Query("SELECT * FROM tb_tugas WHERE isDone = 0")
-    fun getTugasByStatus(): LiveData<List<Tugas>>
+    fun getTugasIncomplete(): LiveData<List<Tugas>>
 
     // Mengambil tugas yang sudah selesai (isDone = true) menggunakan LiveData
     @Query("SELECT * FROM tb_tugas WHERE isDone = 1")
-    fun getTugasSelesai(): LiveData<List<Tugas>>
-
-    // Mengambil semua tugas menggunakan LiveData
-    @Query("SELECT * FROM tb_tugas")
-    fun getAllTugas(): LiveData<List<Tugas>>
+    fun getTugasComplete(): LiveData<List<Tugas>>
 
     // Update status isDone menjadi true
     @Query("UPDATE tb_tugas SET isDone = 1 WHERE id = :tugasId")
-    suspend fun markTugasAsDone(tugasId: Int)
+    suspend fun markTugasAsComplete(tugasId: Int)
 
     // Update status isDone menjadi false
     @Query("UPDATE tb_tugas SET isDone = 0 WHERE id = :tugasId")
