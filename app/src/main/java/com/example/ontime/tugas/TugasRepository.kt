@@ -10,6 +10,10 @@ class TugasRepository (private val tugasDao: TugasDao) {
         tugasDao.insertTugas(tugas)
     }
 
+    suspend fun deleteTugasRep(tugas: Tugas){
+        tugasDao.deleteTugas(tugas)
+    }
+
     suspend fun markTugasComplete(tugas: Tugas){
         tugasDao.markTugasAsComplete(tugas.id)
     }

@@ -2,6 +2,7 @@ package com.example.ontime.tugas
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -9,6 +10,9 @@ import androidx.room.Query
 interface TugasDao {
     @Insert
     suspend fun insertTugas(vararg tugas: Tugas)
+
+    @Delete
+    suspend fun deleteTugas(vararg tugas: Tugas)
 
     // Mengambil tugas yang belum selesai (isDone = false) menggunakan LiveData
     @Query("SELECT * FROM tb_tugas WHERE isDone = 0")

@@ -5,12 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemTugasBinding
 import com.example.ontime.databinding.ItemTugasPriorityBinding
+import com.example.ontime.setup.AppViewModel
 
 enum class ITEM_VIEW_TYPE { NORMAL, PRIORITY }
 
 class TugasAdapter(
     private var tugas: List<Tugas>,
-    private val onDeleteClick: (Tugas) -> Unit
+    private val onDeleteClick: (Tugas) -> Unit,
+    private val onHoldClick: (Tugas) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     inner class TugasViewHolder(private val binding: ItemTugasBinding) :
@@ -22,6 +24,10 @@ class TugasAdapter(
 
             binding.itemTugas.setOnClickListener {
                 onDeleteClick(tugas)
+            }
+            binding.itemTugas.setOnLongClickListener {
+                onHoldClick(tugas)
+                true
             }
         }
     }
@@ -35,6 +41,10 @@ class TugasAdapter(
 
             binding.itemTugasPeriority.setOnClickListener {
                 onDeleteClick(tugas)
+            }
+            binding.itemTugasPeriority.setOnLongClickListener {
+                onHoldClick(tugas)
+                true
             }
         }
     }

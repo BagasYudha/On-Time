@@ -34,16 +34,26 @@ class TugasFragment : Fragment() {
         // Inisialisasi
         appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
 
-        tugasAdapter = TugasAdapter(listOf()) { tugas ->
-            appViewModel.markTugasCompleteVm(tugas)
+        tugasAdapter = TugasAdapter(
+            listOf(),
+            onDeleteClick = { tugas ->
+                appViewModel.markTugasCompleteVm(tugas)
+                Toast.makeText(
+                    requireContext(),
+                    "Tugas ${tugas.judul} sudah ditandai sebagai selesai",
+                    Toast.LENGTH_SHORT
+                ).show()
+            },
+            onHoldClick = { tugas ->
+                appViewModel.deleteTugasVm(tugas)
+                Toast.makeText(
+                    requireContext(),
+                    "Tugas ${tugas.judul} telah dihapus",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        )
 
-            Toast.makeText(
-                requireContext(),
-                "Tugas ${tugas.judul} sudah ditandai sebagai selesai",
-                Toast.LENGTH_SHORT
-            ).show()
-
-        }
 
         binding.RvDaftarTugas.adapter = tugasAdapter
         binding.RvDaftarTugas.layoutManager = LinearLayoutManager(requireContext())

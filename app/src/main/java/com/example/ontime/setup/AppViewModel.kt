@@ -71,6 +71,12 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun deleteTugasVm(tugas: Tugas) {
+        viewModelScope.launch {
+            tugasRepository.deleteTugasRep(tugas)
+        }
+    }
+
     fun markTugasCompleteVm(tugas: Tugas) {
         viewModelScope.launch {
             tugasRepository.markTugasComplete(tugas)
