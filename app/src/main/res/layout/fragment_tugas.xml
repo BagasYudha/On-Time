@@ -80,11 +80,20 @@
         app:layout_constraintStart_toEndOf="@+id/mySpinner"
         app:layout_constraintTop_toTopOf="@+id/mySpinner"/>
 
+    <CheckBox
+        android:id="@+id/priorityCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Perioritas"
+        android:layout_marginLeft="-5dp"
+        app:layout_constraintStart_toStartOf="@+id/InputTambahTugas"
+        app:layout_constraintTop_toBottomOf="@+id/InputTambahTugas" />
+
     <TextView
         android:id="@+id/DaftarTugas2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/poppins_semibold"
         android:text="Daftar Tugas"
         android:textColor="@color/body"
@@ -104,6 +113,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/DaftarTugas2"
         app:layout_constraintTop_toBottomOf="@id/DaftarTugas2" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

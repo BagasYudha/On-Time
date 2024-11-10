@@ -23,7 +23,7 @@
             android:id="@+id/itemSelesaiBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/blue_border"
+            android:background="@drawable/border_biru_soft"
             android:orientation="vertical"
             android:padding="16dp">
 

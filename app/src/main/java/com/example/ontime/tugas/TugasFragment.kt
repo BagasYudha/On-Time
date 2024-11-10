@@ -39,9 +39,10 @@ class TugasFragment : Fragment() {
 
             Toast.makeText(
                 requireContext(),
-                "Dosen ${tugas.judul} sudah selesai",
+                "Tugas ${tugas.judul} sudah ditandai sebagai selesai",
                 Toast.LENGTH_SHORT
             ).show()
+
         }
 
         binding.RvDaftarTugas.adapter = tugasAdapter
@@ -54,11 +55,12 @@ class TugasFragment : Fragment() {
 
         // Set action untuk button yang menambahkan tugas
         binding.roundButton.setOnClickListener {
-            val tugasBaru = binding.InputTambahTugas.text.toString()
+            val tugas = binding.InputTambahTugas.text.toString()
+            val priority = binding.priorityCheckBox.isChecked
 
-            if (tugasBaru.isNotEmpty() && matkulDipilih != null) {
-                val tugas = Tugas(judul = tugasBaru, matkul = matkulDipilih!!, isDone = false)
-                appViewModel.insertTugasVm(tugas)
+            if (tugas.isNotEmpty() && matkulDipilih != null) {
+                val tugasBaru = Tugas(judul = tugas, matkul = matkulDipilih!!, isDone = false, isPrority = priority)
+                appViewModel.insertTugasVm(tugasBaru)
                 Toast.makeText(
                     requireContext(),
                     "Tugas baru ditambahkan: $tugasBaru",
