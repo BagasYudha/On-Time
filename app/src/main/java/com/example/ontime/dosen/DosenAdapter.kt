@@ -40,4 +40,7 @@ class DosenAdapter(
         notifyDataSetChanged()
     }
 
+    fun getItem(position: Int): Dosen {
+        return dosen[position]
+    }
 }
