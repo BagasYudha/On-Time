@@ -14,9 +14,6 @@ interface MataKuliahDao {
     @Query("SELECT * FROM tb_mata_kuliah")
     fun getAllMataKuliah(): LiveData<List<MataKuliah>>
 
-//    @Query("DELETE FROM tb_mata_kuliah WHERE id = :id")
-//    suspend fun deleteMatkul(id: Int)
-
     @Delete
     suspend fun deleteMatkul(vararg matkul: MataKuliah)
 }

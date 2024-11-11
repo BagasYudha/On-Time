@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ontime.R
 import com.example.ontime.databinding.FragmentDosenBinding
@@ -47,7 +48,7 @@ class MatkulFragment : Fragment() {
         }
 
         binding.rvMatkul.adapter = matkulAdapter
-        binding.rvMatkul.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvMatkul.layoutManager = GridLayoutManager(context, 2)
 
         // Observasi data dari ViewModel
         appViewModel.allMatkul.observe(viewLifecycleOwner) { matkulList ->

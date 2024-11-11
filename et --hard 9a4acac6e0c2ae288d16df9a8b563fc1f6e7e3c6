@@ -1,0 +1,277 @@
+[33mcommit 7ba92e4502e9dfea79092f9a71e68aaece4b4bf0[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: 26d5364 6fbf138
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Mon Nov 11 10:46:01 2024 +0700
+
+    modified
+
+[33mcommit 26d53640e07a83f57700e5545bd29f3e30a2f938[m
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Mon Nov 11 10:45:10 2024 +0700
+
+    modified
+
+[33mcommit 6fbf1386ac1e09dc6cb2c444a4814d0a534215fa[m
+Merge: e3c8bbe 9a4acac
+Author: wardachang <wardamgc@gmail.com>
+Date:   Mon Nov 11 10:42:22 2024 +0700
+
+    Merge conflict
+
+[33mcommit e3c8bbe4b7d3410abbda571b8a89219f770acb48[m
+Author: wardachang <wardamgc@gmail.com>
+Date:   Mon Nov 11 10:36:20 2024 +0700
+
+    Menambahkan test database dan command
+
+[33mcommit 9a4acac6e0c2ae288d16df9a8b563fc1f6e7e3c6[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Nov 11 00:07:07 2024 +0700
+
+    Menambahkan on delete hold
+
+[33mcommit 0e2adb47aaabed0d0c7a02506f5aed9f667616f1[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sun Nov 10 23:29:11 2024 +0700
+
+    Menambahkan item view type
+
+[33mcommit f313239074b859b64e3d6f55e672f2a5528f9cf5[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Nov 4 20:46:50 2024 +0700
+
+    Mengimplementasikan Repository pada Tugas
+
+[33mcommit 6be30b67fe4e07855a0dab79cc7a20ca27bed516[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Nov 4 20:03:21 2024 +0700
+
+    Mengimplementasikan Repository pada MataKuliah
+
+[33mcommit bc15073c645200b4a8eeac9b4808c351b924f805[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Nov 4 19:44:02 2024 +0700
+
+    Mengimplementasikan Repository pada Dosen
+
+[33mcommit 82db6508dc5f844a1561a10299130aa5b1b73ae7[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sun Nov 3 03:49:16 2024 +0700
+
+    Memisahkan Matkul dari fragment Dosen dan membuatkannya fragment baru
+
+[33mcommit 2a57758bfb8e834c2f81af5638dfc76472e857d2[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sun Nov 3 02:19:08 2024 +0700
+
+    Merapikan folder file
+
+[33mcommit ca82754639cd0fa3244bb8ce1e2953b417e0aaf0[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Tue Oct 29 22:19:07 2024 +0700
+
+    menambahkan testing
+
+[33mcommit 46c791b5fd674b27994c926542fbe83e910a5123[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Oct 21 21:48:47 2024 +0700
+
+    membuat testing database
+
+[33mcommit d416b042e047ba77b6110162d3e9668bd4497daf[m
+Merge: 0c82c68 a148265
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Oct 21 08:37:10 2024 +0700
+
+    merge conflict
+
+[33mcommit 0c82c686947780313da46c33842adcdd9c1bea44[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Oct 21 08:35:53 2024 +0700
+
+    a
+
+[33mcommit a14826518be39bfcaa914b7e9544e07060fcb1aa[m
+Author: wardachang <wardamgc@gmail.com>
+Date:   Mon Oct 21 08:20:59 2024 +0700
+
+    menyelesaikan selesai adapter
+
+[33mcommit 956457ffb41315d7c348f009c1bce78543b0a29f[m
+Author: Umi1415 <umi.lyuka@gmail.com>
+Date:   Mon Oct 21 05:28:03 2024 +0700
+
+    Adapter Matkul
+
+[33mcommit b059fa9fb0d15b92c8f5c4c7440fdc1195c3895e[m
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Mon Oct 21 01:21:01 2024 +0700
+
+    memperbarui fragmen dan adapter tugas
+
+[33mcommit c2881e5eda7424cf33e1200c3b4bb57df1b85fc4[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Oct 21 00:14:23 2024 +0700
+
+    -
+
+[33mcommit 3db4c71191ae56d49e94cb994f3a22118d2d5326[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Oct 21 00:09:27 2024 +0700
+
+    Config Dao dan Database
+
+[33mcommit 6161e12e0d8cf3c380acb825ddc3f05e715432cd[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Mon Oct 21 00:07:57 2024 +0700
+
+    konfigurasi setup terakhir banget inimah
+
+[33mcommit 4c6582eff61dd182fe3e4521683f253241f86316[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sun Oct 20 23:04:27 2024 +0700
+
+    membuat tampilan untuk Daftar Matkul
+
+[33mcommit c21d0e36c0df2b44569690a4efb105f4b3c57c7b[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sun Oct 20 21:55:40 2024 +0700
+
+    konfigurasi untuk menyelaraskan database dan AppViewModel.kt
+
+[33mcommit 405b4378d8db8919937d6f8087ba933f89940e2b[m
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sun Oct 20 16:47:50 2024 +0700
+
+    memperbarui input fragmen tugas
+
+[33mcommit 3ff0a88df084809781424c1cec6f703ffed3bdbd[m
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sun Oct 20 16:40:16 2024 +0700
+
+    tugas fragment button
+
+[33mcommit 2048061424c5e6a7e9569b3e04f4dcba6d69de1e[m
+Merge: d486635 973739e
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sun Oct 20 15:24:31 2024 +0700
+
+    merging conflict
+
+[33mcommit 973739edf6321f3119ed4da58c9614335514a7bf[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sun Oct 20 15:13:21 2024 +0700
+
+    memperbaiki force close pada fragment dosen
+
+[33mcommit d486635739a50b9da6fdf77529d0ea4c1c95848f[m
+Merge: a1653f0 2364d04
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sun Oct 20 15:09:23 2024 +0700
+
+    Merge branch 'main' of https://github.com/BagasYudha/On-Time
+
+[33mcommit 2364d04229160f4d5adda781daee5845014c8a78[m
+Merge: aa34ade dff24f6
+Author: wardachang <wardamgc@gmail.com>
+Date:   Sun Oct 20 15:06:09 2024 +0700
+
+    Merge branch 'main' of https://github.com/BagasYudha/On-Time
+
+[33mcommit aa34adeb9787f53d218e629a60de0bac50e39eea[m
+Author: wardachang <wardamgc@gmail.com>
+Date:   Sun Oct 20 15:05:46 2024 +0700
+
+    fragment selesai
+
+[33mcommit a1653f08c2912c7243599728f3e1f2037c933972[m
+Merge: 20ac940 dff24f6
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sun Oct 20 14:58:10 2024 +0700
+
+    Merge branch 'main' of https://github.com/BagasYudha/On-Time
+
+[33mcommit 20ac9402dd52b0ac916951b2f214f10897da959e[m
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sun Oct 20 14:58:02 2024 +0700
+
+    Menambahkan perubahan pada AppViewModel
+
+[33mcommit dff24f658a0715f451168aff1df234f321d6b77b[m
+Author: Umi1415 <umi.lyuka@gmail.com>
+Date:   Sun Oct 20 14:54:04 2024 +0700
+
+    tombol Delete
+
+[33mcommit ff0f78fe5e4f3248e199f3afa65abb1fd14c7a11[m
+Merge: 1b845d4 5bbd6d9
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sun Oct 20 14:51:03 2024 +0700
+
+    Resolve merge conflict in deploymentTargetSelector.xml
+
+[33mcommit 1b845d493a2c84c5f377d299ee562d6f4e1e7ec4[m
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sun Oct 20 14:49:09 2024 +0700
+
+    Save local changes to deploymentTargetSelector.xml
+
+[33mcommit 5bbd6d9b461b3144a220469161f9c2fcd0296f14[m
+Merge: 22b99c0 aa10976
+Author: wardachang <wardamgc@gmail.com>
+Date:   Sun Oct 20 14:29:13 2024 +0700
+
+    merge conflict
+
+[33mcommit 22b99c0370d128169668d5acaf58fca4728ce214[m
+Author: wardachang <wardamgc@gmail.com>
+Date:   Sun Oct 20 14:17:33 2024 +0700
+
+    fragmen selesai
+
+[33mcommit aa10976c35ece40502b17516b378fdc96a816eb7[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sun Oct 20 14:15:57 2024 +0700
+
+    Menambahkan View model untuk Mata kuliah
+
+[33mcommit 72cea96274e1dbd54ef0922d4b6862f44c824472[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sun Oct 20 01:09:53 2024 +0700
+
+    Fragment dosen database done without matkul
+
+[33mcommit 20eabe951e82b1fa0dcd252c3fcb8d9187f278b1[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sat Oct 19 21:08:52 2024 +0700
+
+    merapikan progress teman-teman part 2
+
+[33mcommit e19654f79044c6362c1c8b7f72deb9540e989be1[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sat Oct 19 20:31:04 2024 +0700
+
+    merapikan progress teman-teman
+
+[33mcommit 3c6465eb6e1a412db1531cface95a8b7eaf17ede[m
+Author: BagasYudha <bayud.kematian@gmail.com>
+Date:   Sat Oct 19 20:01:08 2024 +0700
+
+    Memperbaikii force close pada Fragment Tugas
+
+[33mcommit c1368fa3e46cd522966caad3ef030bb1773ed295[m
+Merge: 3fadb40 397347f
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sat Oct 19 10:40:43 2024 +0700
+
+    Merge branch 'main' of https://github.com/BagasYudha/On-Time
+
+[33mcommit 3fadb402bd5fd4d459ee7bcdba15b22eef9078f7[m
+Author: nknken <nikensetyo17@gmail.com>
+Date:   Sat Oct 19 10:40:01 2024 +0700
+
+    gradel
+
+[33mcommit 397347fecf4f9b512bd2292610cb2d63e01acc88[m
+Author: Umi1415 <umi.lyuka@gmail.com>
+Date:   Sat Oct 19 1
