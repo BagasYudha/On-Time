@@ -41,21 +41,8 @@ class DosenFragment : Fragment() {
             Toast.makeText(requireContext(), "Dosen ${dosen.nama} berhasil dihapus", Toast.LENGTH_SHORT).show()
         }
 
-        val customLayoutManager = GridLayoutManager(requireContext(), 2)
-
-        // Menambahkan SpanSizeLookup untuk menentukan jumlah kolom yang digunakan
-        customLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-            override fun getSpanSize(position: Int): Int {
-                // Menentukan jumlah kolom yang digunakan berdasarkan tipe data
-                return when (val item = dosenAdapter.getItem(position)) {
-                    is Dosen -> 1   // Jika item adalah tipe Dosen, gunakan 1 kolom
-                    else -> 2        // Untuk tipe lainnya, gunakan 2 kolom
-                }
-            }
-        }
-
         binding.rvDaftarDosen.adapter = dosenAdapter
-        binding.rvDaftarDosen.layoutManager = customLayoutManager
+        binding.rvDaftarDosen.layoutManager = GridLayoutManager(context, 2)
 
         // Observasi data dari ViewModel
         appViewModel.allDosen.observe(viewLifecycleOwner) { dosen ->
