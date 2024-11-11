@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ontime.databinding.FragmentTugasBinding
 import com.example.ontime.setup.AppViewModel
@@ -56,7 +57,7 @@ class TugasFragment : Fragment() {
 
 
         binding.RvDaftarTugas.adapter = tugasAdapter
-        binding.RvDaftarTugas.layoutManager = LinearLayoutManager(requireContext())
+        binding.RvDaftarTugas.layoutManager = GridLayoutManager(context, 2)
 
         // Observasi data dari ViewModel
         appViewModel.tugasBelumSelesai.observe(viewLifecycleOwner) { tugas ->
