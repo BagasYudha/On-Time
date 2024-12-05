@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemDosenBinding
 
 class DosenAdapter(
-    private var dosen: List<Dosen>,
+    private var dosen: MutableList<Dosen>,
     private val onDeleteClick: (Dosen) -> Unit
 ) :
     RecyclerView.Adapter<DosenAdapter.DosenViewHolder>() {
@@ -36,11 +36,8 @@ class DosenAdapter(
     }
 
     fun updateDosen(newDosen: List<Dosen>) {
-        dosen = newDosen.sortedByDescending { it.id }
+        dosen.clear()
+        dosen.addAll(newDosen)
         notifyDataSetChanged()
-    }
-
-    fun getItem(position: Int): Dosen {
-        return dosen[position]
     }
 }

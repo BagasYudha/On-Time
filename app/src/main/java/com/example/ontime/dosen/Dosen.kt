@@ -1,11 +1,7 @@
 package com.example.ontime.dosen
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity(tableName = "tb_dosen")
 data class Dosen(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val nama: String,
-    val email: String
+    var id: String? = null,
+    var nama: String = "",
+    var email: String = ""
 )

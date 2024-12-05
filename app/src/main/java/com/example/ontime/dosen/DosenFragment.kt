@@ -7,19 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ontime.matkul.MatkulAdapter
 import com.example.ontime.databinding.FragmentDosenBinding
 import com.example.ontime.setup.AppViewModel
 import com.example.ontime.matkul.MataKuliah
+import com.google.firebase.database.database
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 class DosenFragment : Fragment() {
 
     private lateinit var binding: FragmentDosenBinding
     private lateinit var appViewModel: AppViewModel
-    private lateinit var dosenAdapter: DosenAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,19 +40,14 @@ class DosenFragment : Fragment() {
         // Inisialisasi ViewModel
         appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
 
-        // Untuk Dosen
-        dosenAdapter = DosenAdapter(listOf()) { dosen ->
-            appViewModel.deleteDosenVm(dosen)
-            Toast.makeText(requireContext(), "Dosen ${dosen.nama} berhasil dihapus", Toast.LENGTH_SHORT).show()
-        }
+        val dosenAdapter = DosenAdapter(mutableListOf(),
+            onDeleteClick = { dosen ->
+                appViewModel.deleteDosenVm(dosen)
+            }
+        )
 
         binding.rvDaftarDosen.adapter = dosenAdapter
-        binding.rvDaftarDosen.layoutManager = GridLayoutManager(context, 2)
-
-        // Observasi data dari ViewModel
-        appViewModel.allDosen.observe(viewLifecycleOwner) { dosen ->
-            dosenAdapter.updateDosen(dosen)
-        }
+        binding.rvDaftarDosen.layoutManager = LinearLayoutManager(context)
 
         // Tambahkan dosen baru
         binding.roundButton.setOnClickListener {
@@ -60,6 +60,13 @@ class DosenFragment : Fragment() {
                 Toast.makeText(requireContext(), "Dosen $namaDosen berhasil ditambahkan", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(requireContext(), "Mohon lengkapi semua data", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // Observasi data Note dari ViewModel
+        viewLifecycleOwner.lifecycleScope.launch {
+            appViewModel.dosens.collectLatest { notes ->
+                dosenAdapter.updateDosen(notes)
             }
         }
 

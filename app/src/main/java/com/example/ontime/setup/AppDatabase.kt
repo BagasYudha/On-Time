@@ -4,17 +4,14 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.ontime.dosen.Dosen
-import com.example.ontime.dosen.DosenDao
 import com.example.ontime.matkul.MataKuliah
 import com.example.ontime.matkul.MataKuliahDao
 import com.example.ontime.tugas.Tugas
 import com.example.ontime.tugas.TugasDao
 
-@Database(entities = [Tugas::class, Dosen::class, MataKuliah::class], version = 2)
+@Database(entities = [Tugas::class, MataKuliah::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun tugasDao(): TugasDao
-    abstract fun dosenDao(): DosenDao
     abstract fun matkulDao(): MataKuliahDao
 
     companion object {
