@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.ontime.databinding.FragmentSelesaiBinding
 import com.example.ontime.setup.AppViewModel
 
@@ -34,7 +34,7 @@ class SelesaiFragment : Fragment() {
         }
 
         binding.rvDaftarSelesai.adapter = selesaiAdapter
-        binding.rvDaftarSelesai.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvDaftarSelesai.layoutManager = GridLayoutManager(requireContext(), 2) // Mengatur 2 kolom
 
         // Amati LiveData untuk tugas yang sudah selesai
         appViewModel.tugasSelesai.observe(viewLifecycleOwner) { tugasList ->
