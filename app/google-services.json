@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "841701794323",
+    "firebase_url": "https://ontimedatabase-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ontimedatabase",
+    "storage_bucket": "ontimedatabase.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841701794323:android:69bfd20970a74dffc755e6",
+        "android_client_info": {
+          "package_name": "com.example.ontime"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyQfRhC8wZHq1nh6Z6x_gJ2TIPvO6tZ3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
