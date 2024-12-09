@@ -1,11 +1,7 @@
 package com.example.ontime.matkul
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
-@Entity(tableName = "tb_mata_kuliah")
 data class MataKuliah(
-    @PrimaryKey(autoGenerate = true) val id: Int = 0,
-    val matkul: String,
-    val sks: Int
+    var id: String? = null,
+    var matkul: String = "",
+    var sks: String = ""
 )

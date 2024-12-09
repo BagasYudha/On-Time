@@ -17,24 +17,21 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
 
     // Inisialisasi Repository
     private val dosenRepository = DosenRepository()
-    private val matkulRepository: MatkulRepository
+    private val matkulRepository= MatkulRepository()
     private val tugasRepository: TugasRepository
 
     // Observasi Database
-    val allMatkul: LiveData<List<MataKuliah>>
     val tugasSelesai: LiveData<List<Tugas>>
     val tugasBelumSelesai: LiveData<List<Tugas>>
 
     val dosens: Flow<List<Dosen>> = dosenRepository.dosens
+    val matkuls: Flow<List<MataKuliah>> = matkulRepository.matkuls
 
     init {
-        val matkulDao = AppDatabase.getDatabase(application).matkulDao()
         val tugasDao = AppDatabase.getDatabase(application).tugasDao()
 
-        matkulRepository = MatkulRepository(matkulDao)
         tugasRepository = TugasRepository(tugasDao)
 
-        allMatkul = matkulRepository.allMatkul
         tugasSelesai = tugasRepository.tugasComplete
         tugasBelumSelesai = tugasRepository.tugasIncomplete
     }

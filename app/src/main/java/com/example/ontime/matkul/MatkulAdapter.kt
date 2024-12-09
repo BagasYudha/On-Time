@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemMatkulBinding
 
 class MatkulAdapter(
-    private var matkul: List<MataKuliah>,
+    private var matkul: MutableList<MataKuliah>,
     private val onDeleteClick: (MataKuliah) -> Unit
 ) :
     RecyclerView.Adapter<MatkulAdapter.MataKuliahViewHolder>() {
@@ -36,7 +36,8 @@ class MatkulAdapter(
     }
 
     fun updateMataKuliah(newMataKuliah: List<MataKuliah>) {
-        matkul = newMataKuliah.sortedByDescending { it.id }
+        matkul.clear()
+        matkul.addAll(newMataKuliah)
         notifyDataSetChanged()
     }
 

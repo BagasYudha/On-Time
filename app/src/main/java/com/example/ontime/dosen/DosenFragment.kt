@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ontime.matkul.MatkulAdapter
 import com.example.ontime.databinding.FragmentDosenBinding
 import com.example.ontime.setup.AppViewModel
-import com.example.ontime.matkul.MataKuliah
 import com.google.firebase.database.database
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
