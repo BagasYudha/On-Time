@@ -1,6 +1,7 @@
 package com.example.ontime.tugas
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +10,14 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ontime.databinding.FragmentTugasBinding
 import com.example.ontime.setup.AppViewModel
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 class TugasFragment : Fragment() {
 
@@ -20,6 +25,10 @@ class TugasFragment : Fragment() {
     private lateinit var appViewModel: AppViewModel
     private lateinit var tugasAdapter: TugasAdapter
     private var matkulDipilih: String? = null
+
+    companion object {
+        private const val TAG = "TugasFragment" // Untuk log di Logcat
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,11 +41,19 @@ class TugasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Inisialisasi
+        Firebase.database.reference.child("test").setValue("check")
+            .addOnSuccessListener {
+                Log.d(TAG, "Berhasil terhubung ke Firebase.")
+            }
+            .addOnFailureListener { exception ->
+                Log.e(TAG, "Gagal terhubung ke Firebase: ${exception.message}")
+            }
+
+
+        // Inisialisasi ViewModel
         appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
 
         tugasAdapter = TugasAdapter(
-            listOf(),
             onDeleteClick = { tugas ->
                 appViewModel.markTugasCompleteVm(tugas)
                 Toast.makeText(
@@ -55,13 +72,14 @@ class TugasFragment : Fragment() {
             }
         )
 
-
         binding.RvDaftarTugas.adapter = tugasAdapter
         binding.RvDaftarTugas.layoutManager = GridLayoutManager(context, 2)
 
         // Observasi data dari ViewModel
-        appViewModel.tugasBelumSelesai.observe(viewLifecycleOwner) { tugas ->
-            tugasAdapter.updateTugas(tugas)
+        viewLifecycleOwner.lifecycleScope.launch {
+            appViewModel.tugasBelumSelesai.collect { tugas ->
+                tugasAdapter.updateTugas(tugas)
+            }
         }
 
         // Set action untuk button yang menambahkan tugas
@@ -70,7 +88,8 @@ class TugasFragment : Fragment() {
             val priority = binding.priorityCheckBox.isChecked
 
             if (tugas.isNotEmpty() && matkulDipilih != null) {
-                val tugasBaru = Tugas(judul = tugas, matkul = matkulDipilih!!, isDone = false, isPrority = priority)
+                val tugasBaru =
+                    Tugas(judul = tugas, matkul = matkulDipilih!!, isDone = false, isPriority = priority)
                 appViewModel.insertTugasVm(tugasBaru)
                 Toast.makeText(
                     requireContext(),
@@ -86,8 +105,6 @@ class TugasFragment : Fragment() {
                 ).show()
             }
         }
-
-
 
         // Data yang akan ditampilkan dalam Spinner
         val items =

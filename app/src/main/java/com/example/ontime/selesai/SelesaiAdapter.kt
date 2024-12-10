@@ -1,5 +1,6 @@
 package com.example.ontime.selesai
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -38,7 +39,8 @@ class SelesaiAdapter(
     }
 
     fun updateTugas(newTugas: List<Tugas>) {
-        tugas = newTugas.sortedByDescending { it.id }
+        tugas = newTugas.filter { it.isDone }
+        Log.d("SelesaiAdapter", "Tugas diperbarui: ${tugas.map { it.judul }}")
         notifyDataSetChanged()
     }
 }

@@ -11,6 +11,7 @@ import com.example.ontime.matkul.MatkulRepository
 import com.example.ontime.tugas.Tugas
 import com.example.ontime.tugas.TugasRepository
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class AppViewModel(application: Application) : AndroidViewModel(application) {
@@ -18,23 +19,15 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     // Inisialisasi Repository
     private val dosenRepository = DosenRepository()
     private val matkulRepository= MatkulRepository()
-    private val tugasRepository: TugasRepository
+    private val tugasRepository= TugasRepository()
 
     // Observasi Database
-    val tugasSelesai: LiveData<List<Tugas>>
-    val tugasBelumSelesai: LiveData<List<Tugas>>
+    val tugasSelesai: StateFlow<List<Tugas>> get() = tugasRepository.tugasComplete
+    val tugasBelumSelesai: StateFlow<List<Tugas>> get() = tugasRepository.tugasIncomplete
 
     val dosens: Flow<List<Dosen>> = dosenRepository.dosens
     val matkuls: Flow<List<MataKuliah>> = matkulRepository.matkuls
 
-    init {
-        val tugasDao = AppDatabase.getDatabase(application).tugasDao()
-
-        tugasRepository = TugasRepository(tugasDao)
-
-        tugasSelesai = tugasRepository.tugasComplete
-        tugasBelumSelesai = tugasRepository.tugasIncomplete
-    }
 
     // Menggunakan coroutine viewModelScope untuk menjalankan proses ini di background thread
     fun insertDosenVm(dosen: Dosen) {

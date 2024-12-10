@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ontime.databinding.ItemTugasBinding
 import com.example.ontime.databinding.ItemTugasPriorityBinding
-import com.example.ontime.setup.AppViewModel
 
 enum class ITEM_VIEW_TYPE { NORMAL, PRIORITY }
 
 class TugasAdapter(
-    private var tugas: List<Tugas>,
     private val onDeleteClick: (Tugas) -> Unit,
     private val onHoldClick: (Tugas) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    private var tugas: List<Tugas> = listOf()
 
     inner class TugasViewHolder(private val binding: ItemTugasBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -50,7 +50,7 @@ class TugasAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (tugas[position].isPrority) {
+        return if (tugas[position].isPriority) {
             ITEM_VIEW_TYPE.PRIORITY.ordinal
         } else {
             ITEM_VIEW_TYPE.NORMAL.ordinal
