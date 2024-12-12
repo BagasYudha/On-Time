@@ -22,8 +22,8 @@ class AppViewModel(application: Application) : AndroidViewModel(application) {
     private val tugasRepository= TugasRepository()
 
     // Observasi Database
-    val tugasSelesai: StateFlow<List<Tugas>> get() = tugasRepository.tugasComplete
-    val tugasBelumSelesai: StateFlow<List<Tugas>> get() = tugasRepository.tugasIncomplete
+    val tugasSelesai: Flow<List<Tugas>> = tugasRepository.tugasComplete
+    val tugasBelumSelesai: Flow<List<Tugas>> = tugasRepository.tugasIncomplete
 
     val dosens: Flow<List<Dosen>> = dosenRepository.dosens
     val matkuls: Flow<List<MataKuliah>> = matkulRepository.matkuls

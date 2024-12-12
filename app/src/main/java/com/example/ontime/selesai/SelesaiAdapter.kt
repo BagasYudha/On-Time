@@ -39,8 +39,7 @@ class SelesaiAdapter(
     }
 
     fun updateTugas(newTugas: List<Tugas>) {
-        tugas = newTugas.filter { it.isDone }
-        Log.d("SelesaiAdapter", "Tugas diperbarui: ${tugas.map { it.judul }}")
+        tugas = newTugas.filter { it.done }
         notifyDataSetChanged()
     }
 }

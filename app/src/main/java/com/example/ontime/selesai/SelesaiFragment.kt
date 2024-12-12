@@ -19,7 +19,6 @@ class SelesaiFragment : Fragment() {
     private lateinit var appViewModel: AppViewModel
     private lateinit var selesaiAdapter: SelesaiAdapter
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +33,6 @@ class SelesaiFragment : Fragment() {
         appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
 
         selesaiAdapter = SelesaiAdapter(emptyList()) { tugas ->
-            // Mark tugas as incomplete in Firebase
             viewLifecycleOwner.lifecycleScope.launch {
                 appViewModel.markTugasIncompleteVm(tugas)
             }

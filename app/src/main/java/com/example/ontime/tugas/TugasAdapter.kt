@@ -92,6 +92,7 @@ class TugasAdapter(
 
     fun updateTugas(newTugas: List<Tugas>) {
         tugas = newTugas.sortedByDescending { it.id }
+        tugas = newTugas.filter { !it.done }
         notifyDataSetChanged()
     }
 }

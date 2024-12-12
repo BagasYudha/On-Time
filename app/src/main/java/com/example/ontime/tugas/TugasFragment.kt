@@ -17,13 +17,14 @@ import com.example.ontime.setup.AppViewModel
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class TugasFragment : Fragment() {
 
     private lateinit var binding: FragmentTugasBinding
     private lateinit var appViewModel: AppViewModel
-    private lateinit var tugasAdapter: TugasAdapter
+//    private lateinit var tugasAdapter: TugasAdapter
     private var matkulDipilih: String? = null
 
     companion object {
@@ -41,19 +42,10 @@ class TugasFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Firebase.database.reference.child("test").setValue("check")
-            .addOnSuccessListener {
-                Log.d(TAG, "Berhasil terhubung ke Firebase.")
-            }
-            .addOnFailureListener { exception ->
-                Log.e(TAG, "Gagal terhubung ke Firebase: ${exception.message}")
-            }
-
-
         // Inisialisasi ViewModel
         appViewModel = ViewModelProvider(this).get(AppViewModel::class.java)
 
-        tugasAdapter = TugasAdapter(
+        val tugasAdapter = TugasAdapter(
             onDeleteClick = { tugas ->
                 appViewModel.markTugasCompleteVm(tugas)
                 Toast.makeText(
@@ -77,10 +69,12 @@ class TugasFragment : Fragment() {
 
         // Observasi data dari ViewModel
         viewLifecycleOwner.lifecycleScope.launch {
-            appViewModel.tugasBelumSelesai.collect { tugas ->
+            appViewModel.tugasBelumSelesai.collectLatest { tugas ->
+                Log.d("TugasFragment", "Tugas belum selesai: $tugas")
                 tugasAdapter.updateTugas(tugas)
             }
         }
+
 
         // Set action untuk button yang menambahkan tugas
         binding.roundButton.setOnClickListener {
@@ -89,7 +83,7 @@ class TugasFragment : Fragment() {
 
             if (tugas.isNotEmpty() && matkulDipilih != null) {
                 val tugasBaru =
-                    Tugas(judul = tugas, matkul = matkulDipilih!!, isDone = false, isPriority = priority)
+                    Tugas(judul = tugas, matkul = matkulDipilih!!, done = false, isPriority = priority)
                 appViewModel.insertTugasVm(tugasBaru)
                 Toast.makeText(
                     requireContext(),

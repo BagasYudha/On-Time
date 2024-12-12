@@ -13,9 +13,11 @@ class TugasRepository {
     private val database = FirebaseDatabase.getInstance()
     private val tugasRef = database.getReference("tugas")
 
+    // StateFlow untuk tugas yang belum selesai
     private val _tugasIncomplete = MutableStateFlow<List<Tugas>>(emptyList())
     val tugasIncomplete: StateFlow<List<Tugas>> get() = _tugasIncomplete
 
+    // StateFlow untuk tugas yang sudah selesai
     private val _tugasComplete = MutableStateFlow<List<Tugas>>(emptyList())
     val tugasComplete: StateFlow<List<Tugas>> get() = _tugasComplete
 
@@ -23,25 +25,12 @@ class TugasRepository {
         // Dengarkan perubahan data di Firebase
         tugasRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val fetchedIncomplete = mutableListOf<Tugas>()
-                val fetchedComplete = mutableListOf<Tugas>()
-
-                for (child in snapshot.children) {
-                    val tugas = child.getValue(Tugas::class.java)
-                    if (tugas != null) {
-                        tugas.id = child.key // Set ID dengan key Firebase
-                        if (tugas.isDone) {
-                            fetchedComplete.add(tugas)
-                        } else {
-                            fetchedIncomplete.add(tugas)
-                        }
-                    }
-                }
-
+                val fetchedIncomplete = snapshot.children.mapNotNull { it.getValue(Tugas::class.java) }.filter { !it.done } // Hanya ambil tugas yang belum selesai
                 _tugasIncomplete.value = fetchedIncomplete
-                _tugasComplete.value = fetchedComplete
 
-                Log.d("TugasRepository", "Data tugas diperbarui: Incomplete (${fetchedIncomplete.size}), Complete (${fetchedComplete.size})")
+                val fetchedComplete = snapshot.children.mapNotNull { it.getValue(Tugas::class.java) }
+                    .filter { it.done }
+                _tugasComplete.value = fetchedComplete // Tugas selesai
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -50,56 +39,29 @@ class TugasRepository {
         })
     }
 
+    // Fungsi untuk menambahkan tugas baru ke Firebase
     fun insertTugasRep(tugas: Tugas) {
-        val id = tugasRef.push().key
-        if (id != null) {
-            tugas.id = id
-            tugasRef.child(id).setValue(tugas)
-                .addOnSuccessListener {
-                    Log.d("TugasRepository", "Tugas berhasil ditambahkan dengan ID: $id")
-                }
-                .addOnFailureListener {
-                    Log.e("TugasRepository", "Gagal menambahkan tugas dengan ID: $id, Error: ${it.message}", it)
-                }
-        } else {
-            Log.w("TugasRepository", "Gagal membuat ID unik untuk tugas.")
+        tugas.id = tugasRef.push().key
+        tugas.id?.let { tugasRef.child(it).setValue(tugas)
         }
     }
 
+    // Fungsi untuk menandai tugas selesai
     fun markTugasComplete(tugas: Tugas) {
         tugas.id?.let { id ->
-            tugasRef.child(id).child("isDone").setValue(true)
-                .addOnSuccessListener {
-                    Log.d("TugasRepository", "Tugas berhasil ditandai selesai dengan ID: $id")
-                }
-                .addOnFailureListener {
-                    Log.e("TugasRepository", "Gagal menandai tugas selesai dengan ID: $id, Error: ${it.message}", it)
-                }
+            tugasRef.child(id).child("done").setValue(true)
         } ?: Log.w("TugasRepository", "Gagal menandai tugas selesai karena ID null.")
     }
 
-    fun deleteTugasRep(tugas: Tugas) {
+    // Fungsi untuk menandai tugas belum selesai
+    fun markTugasIncomplete(tugas: Tugas) {
         tugas.id?.let { id ->
-            tugasRef.child(id).removeValue()
-                .addOnSuccessListener {
-                    Log.d("TugasRepository", "Tugas berhasil dihapus dengan ID: $id")
-                }
-                .addOnFailureListener {
-                    Log.e("TugasRepository", "Gagal menghapus tugas dengan ID: $id, Error: ${it.message}", it)
-                }
-        } ?: Log.w("TugasRepository", "Gagal menghapus tugas karena ID null.")
+            tugasRef.child(id).child("done").setValue(false)
+        }
     }
 
-
-    fun markTugasIncomplete(tugas: Tugas) {
-        tugas.id?.let {
-            tugasRef.child(it).child("isDone").setValue(false)
-                .addOnSuccessListener {
-                    Log.d("TugasRepository", "Tugas berhasil ditandai belum selesai dengan ID: $it")
-                }
-                .addOnFailureListener {
-                    Log.e("TugasRepository", "Gagal menandai tugas belum selesai dengan ID: $it, Error: ${it.message}", it)
-                }
-        } ?: Log.w("TugasRepository", "Gagal menandai tugas belum selesai karena ID null.")
+    // Fungsi untuk menghapus tugas dari Firebase
+    fun deleteTugasRep(tugas: Tugas) {
+        tugas.id?.let { id ->  tugasRef.child(id).removeValue() }
     }
 }
