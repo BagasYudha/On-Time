@@ -35,6 +35,24 @@
             android:textColor="@color/body"
             android:textSize="10dp" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_abu_soft"
+            android:paddingHorizontal="15dp"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvStandart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Standart"
+                android:textSize="10dp"
+                android:textColor="@color/body" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

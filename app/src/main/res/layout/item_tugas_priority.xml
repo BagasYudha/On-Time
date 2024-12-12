@@ -35,15 +35,23 @@
             android:textColor="@color/body"
             android:textSize="10dp" />
 
-        <TextView
-            android:id="@+id/tvPriority"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Priority"
-            android:textColor="@color/body"
-            android:textSize="10dp" />
+            android:background="@drawable/border_biru_soft_priority"
+            android:paddingHorizontal="15dp"
+            android:layout_marginTop="4dp">
+
+            <TextView
+                android:id="@+id/tvStandart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Priority"
+                android:textSize="10dp"
+                android:textColor="@color/maincolor" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
