@@ -1,51 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white">
 
-
-            <!-- Repeating card views for items -->
     <androidx.cardview.widget.CardView
-        android:layout_marginVertical="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
+        android:layout_marginVertical="10dp"
         android:layout_marginHorizontal="10dp"
+        app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:id="@+id/itemSelesaiBox"
+            android:id="@+id/itemTugas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/border_biru_soft"
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Task Title -->
+            <!-- Nama Tugas -->
             <TextView
                 android:id="@+id/namaTugas"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
                 android:text="Nama Tugas"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_semibold"/>
+                android:textColor="@color/body"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
-            <!-- Task Subtitle -->
+            <!-- Mata Kuliah -->
             <TextView
                 android:id="@+id/mataKuliah"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Matakuliah"
+                android:textColor="@color/body"
+                android:textSize="10dp" />
+
+            <!-- Standart (Optional Label) -->
+            <LinearLayout
+                android:id="@+id/priorityOrStandardBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Matakuliah"
-                android:textColor="#888888"
-                android:textSize="14sp"
-                android:fontFamily="@font/poppins_semibold" />
+                android:background="@drawable/border_abu_soft"
+                android:paddingHorizontal="15dp">
+
+                <TextView
+                    android:id="@+id/priorityOrStandardLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Label"
+                    android:textColor="@color/body"
+                    android:textSize="10dp" />
+
+
+            </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

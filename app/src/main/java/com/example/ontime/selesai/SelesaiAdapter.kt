@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ontime.R
 import com.example.ontime.databinding.ItemSelesaiBinding
 import com.example.ontime.tugas.Tugas
 
@@ -21,7 +22,15 @@ class SelesaiAdapter(
             binding.namaTugas.text = tugas.judul
             binding.mataKuliah.text = tugas.matkul
 
-            binding.itemSelesaiBox.setOnClickListener {
+            if (tugas.isPriority) {
+                binding.priorityOrStandardLabel.text = "Priority"
+                binding.priorityOrStandardBox.setBackgroundResource(R.drawable.border_biru_soft_priority)
+            } else {
+                binding.priorityOrStandardLabel.text = "Standard"
+                binding.priorityOrStandardBox.setBackgroundResource(R.drawable.border_abu_soft)
+            }
+
+            binding.priorityOrStandardBox.setOnClickListener {
                 onStatusChange(tugas)
             }
         }
