@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/maincolor"
+        android:text="Logout"
+        app:cornerRadius="50dp"
+        app:iconGravity="textTop"
+        android:layout_marginRight="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/subtitleSelesai"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/subtitleSelesai" />
+
     <!-- Title -->
     <TextView
         android:id="@+id/titleSelesai"

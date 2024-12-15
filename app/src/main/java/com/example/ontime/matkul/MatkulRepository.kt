@@ -2,6 +2,7 @@ package com.example.ontime.matkul
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -11,31 +12,45 @@ import kotlinx.coroutines.flow.StateFlow
 
 class MatkulRepository {
     private val database = FirebaseDatabase.getInstance()
-    private val matkulRef = database.getReference("matkul")
+    private val auth = FirebaseAuth.getInstance()
+    private val currentUserId = auth.currentUser?.uid
 
     private val _matkuls = MutableStateFlow<List<MataKuliah>>(emptyList())
     val matkuls: StateFlow<List<MataKuliah>> get() = _matkuls
 
     init {
         // Listen to data changes in Firebase
-        matkulRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val fetchedNotes = snapshot.children.mapNotNull { it.getValue(MataKuliah::class.java) }
-                _matkuls.value = fetchedNotes
-            }
+        currentUserId?.let { uid ->
+            val matkulRef = database.getReference("matkuls/$uid")
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.w(TAG, "Failed to read value.", error.toException())
-            }
-        })
+            matkulRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val fetchedNotes =
+                        snapshot.children.mapNotNull { it.getValue(MataKuliah::class.java) }
+                    _matkuls.value = fetchedNotes
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.w(TAG, "Failed to read value.", error.toException())
+                }
+            })
+        }
     }
 
     fun insertMatkulRep(matkul: MataKuliah) {
-        matkul.id = matkulRef.push().key
-        matkul.id?.let { matkulRef.child(it).setValue(matkul) }
+        currentUserId?.let { uid ->
+            val matkulRef = database.getReference("matkuls/$uid")
+
+            matkul.id = matkulRef.push().key
+            matkul.id?.let { matkulRef.child(it).setValue(matkul) }
+        }
     }
 
     fun deleteMatkulRep(matkul: MataKuliah) {
-        matkul.id?.let { matkulRef.child(it).removeValue() }
+        currentUserId?.let { uid ->
+            val matkulRef = database.getReference("matkuls/$uid")
+
+            matkul.id?.let { matkulRef.child(it).removeValue() }
+        }
     }
 }

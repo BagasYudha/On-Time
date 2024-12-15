@@ -9,11 +9,11 @@ import com.example.ontime.databinding.ItemSelesaiBinding
 import com.example.ontime.tugas.Tugas
 
 class SelesaiAdapter(
-
-    private var tugas: List<Tugas>,
     private val onStatusChange: (Tugas) -> Unit
 
 ) : RecyclerView.Adapter<SelesaiAdapter.SelesaiViewHolder>() {
+
+    private var tugas: List<Tugas> = listOf()
 
     inner class SelesaiViewHolder(private val binding: ItemSelesaiBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -30,7 +30,7 @@ class SelesaiAdapter(
                 binding.priorityOrStandardBox.setBackgroundResource(R.drawable.border_abu_soft)
             }
 
-            binding.priorityOrStandardBox.setOnClickListener {
+            binding.itemTugas.setOnClickListener {
                 onStatusChange(tugas)
             }
         }
